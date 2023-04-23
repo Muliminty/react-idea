@@ -1,7 +1,11 @@
 # raect-admin
 
-实现后台常见功能demo
+实现中后台常见功能的demo
 
 技术栈
 
-vite react 
++ Vite
++ React
++ Antd
++ Redux
++ React-Router
