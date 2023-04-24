@@ -1,0 +1,30 @@
+.Home {
+    position: relative;
+    top: -40px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    ul {
+        width: 200px;
+        margin-top: 15px;
+
+        p {
+            margin-bottom: 10px;
+        }
+    }
+
+    p {
+        margin-top: 15px;
+        width: 240px;
+    }
+
+    .buttonBox {
+        margin-top: 15px;
+        width: 240px;
+    }
+}
