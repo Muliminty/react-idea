@@ -1,7 +1,7 @@
 
 import style from './style.module.scss'
 import { useEffect, useRef } from 'react';
-import Map from './demo1'
+import Map from './map'
 const { BMapGL } = window
 
 function BaiduMap() {
@@ -37,7 +37,7 @@ function BaiduMap() {
 
     return <div className={style.BaiduMap}>
         <Map
-            style={{ height: 500 }}
+            style={{ height: '100vh' }}
             mapref={_map}
             onClick={click}
         />
