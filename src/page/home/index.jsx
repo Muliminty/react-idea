@@ -3,13 +3,15 @@ import { useEffect, useState, useRef } from 'react'
 import style from './style.module.scss'
 import Animation from '../../components/Animation/index'
 import Loading from '../../components/Loading/index'
-
+import { useNavigate } from 'react-router-dom'
 
 
 function Home() {
 
     let AnimationRef = useRef(null)
     let AnimationLiRef = useRef(null)
+
+    let navigate = useNavigate();
 
     const [skillList, setSkillList] = useState(['Vite']);
 
@@ -46,8 +48,9 @@ function Home() {
 
             <div className={style.buttonBox}>
                 <button onClick={() => {
-
-                }}>进入后台</button>
+                    // 
+                    navigate("/baiduMap");
+                }}>百度地图</button>
             </div>
 
         </div>
