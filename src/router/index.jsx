@@ -6,6 +6,7 @@ import {
 
 import App from "../App";
 import BaiduMap from '../page/BaiduMap/index'
+import TableDemo from '../page/Table/index'
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: "/baiduMap",
         element: <BaiduMap />
+    },
+    {
+        path: "/TableDemo",
+        element: <TableDemo />
     },
 ]);
 

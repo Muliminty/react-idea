@@ -51,6 +51,11 @@ function Home() {
                     // 
                     navigate("/baiduMap");
                 }}>百度地图</button>
+
+                <button onClick={() => {
+                    // 
+                    navigate("/TableDemo");
+                }}>TableDemo</button>
             </div>
 
         </div>
