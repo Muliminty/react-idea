@@ -13,7 +13,13 @@ import { CSS } from '@dnd-kit/utilities';
 import { Table } from 'antd';
 import { useState } from 'react';
 
-
+// ```
+// 下载以下5个依赖：    
+//    npm install @dnd-kit/core
+//    npm install @dnd-kit/sortable
+//    npm install @dnd-kit/modifiers
+//    npm install @dnd-kit/utilities
+// ```
 
 function DragTable() {
     const columns = [
