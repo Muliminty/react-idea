@@ -16,7 +16,7 @@ function Home() {
     const [skillList, setSkillList] = useState(['Vite']);
 
     const skillListApproach = () => {
-        let arr = ['Vite', 'React', 'Antd', 'Redux', 'React-Router', 'Sass CSS Modules']
+        let arr = ['Vite', 'React', 'Antd', 'Redux', 'React-Router', 'Sass CSS Modules', 'Ant Design Charts']
         arr.forEach((e, i) => {
             setTimeout(() => {
                 skillList.push(e)
@@ -56,6 +56,12 @@ function Home() {
                     // 
                     navigate("/TableDemo");
                 }}>TableDemo</button>
+
+
+                <button onClick={() => {
+                    // 
+                    navigate("/EchartDemo");
+                }}>EchartDemo</button>
             </div>
 
         </div>
