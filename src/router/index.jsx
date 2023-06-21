@@ -8,6 +8,7 @@ import App from "../App";
 import BaiduMap from '../page/BaiduMap/index'
 import TableDemo from '../page/Table/index'
 import EchartDemo from '../page/Echart/index'
+import DragDemo from '../page/DragDemo/index'
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     {
         path: "/EchartDemo",
         element: <EchartDemo />
+    },
+    {
+        path: "/DragDemo",
+        element: <DragDemo />
     },
 ]);
 

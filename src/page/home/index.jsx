@@ -57,11 +57,15 @@ function Home() {
                     navigate("/TableDemo");
                 }}>TableDemo</button>
 
-
                 <button onClick={() => {
                     // 
                     navigate("/EchartDemo");
                 }}>EchartDemo</button>
+
+                <button onClick={() => {
+                    // 
+                    navigate("/DragDemo");
+                }}>DragDemo</button>
             </div>
 
         </div>
