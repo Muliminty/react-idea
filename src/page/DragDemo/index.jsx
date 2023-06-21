@@ -2,7 +2,8 @@ import { map, uniq, unionWith, isEqual, pull, cloneDeep, uniqBy, } from 'lodash'
 import { useState } from 'react';
 import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-
+import BorderBox1 from '@jiaminghi/data-view-react/es/borderBox1'
+import BorderBox2 from '@jiaminghi/data-view-react/es/borderBox2'
 
 function Draggable(props) {
 
@@ -43,8 +44,8 @@ function Droppable(props) {
 function Example() {
 
     const [DroppableList, setDroppableList] = useState([
-        { id: 'aa', title: '盒子a', children: [] },
-        { id: 'bb', title: '盒子b', children: [] },
+        { id: 'aa', title: '盒子a', children: [], BorderNode: (props) => <BorderBox1>{props}</BorderBox1> },
+        { id: 'bb', title: '盒子b', children: [], BorderNode: (props) => <BorderBox2>{props}</BorderBox2> },
     ]);
 
     const [DraggableObj, setDraggableObj] = useState([
@@ -103,19 +104,24 @@ function Example() {
 
             {map(DroppableList, (e) => {
 
-                return <Droppable id={e.id}>
-                    <div style={{ width: '300px', height: '300px', background: 'pink', marginTop: '15px', color: '#000', padding: '15px' }}>
-                        <p>{e.title}</p>
+                return <>
+                    {e.BorderNode(
+                        <Droppable id={e.id}>
+                            <div style={{ width: '300px', height: '300px', background: 'pink', marginTop: '15px', color: '#000', padding: '15px' }}>
+                                <p>{e.title}</p>
 
-                        <div>
-                            {map(e.children, (v) => {
-                                return <Draggable id={v}>
-                                    {v}
-                                </Draggable>
-                            })}
-                        </div>
-                    </div>
-                </Droppable>
+                                <div>
+                                    {map(e.children, (v) => {
+                                        return <Draggable id={v}>
+                                            {v}
+                                        </Draggable>
+                                    })}
+                                </div>
+                            </div>
+                        </Droppable>
+                    )}
+
+                </>
             })}
         </DndContext>
     );
