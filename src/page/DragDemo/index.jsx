@@ -1,9 +1,10 @@
-import { map, uniq, unionWith, isEqual, pull, cloneDeep, uniqBy, } from 'lodash'
+import { map, uniq, flatten, cloneDeep, uniqBy, find, filter as _filter } from 'lodash'
 import { useState } from 'react';
 import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-import BorderBox1 from '@jiaminghi/data-view-react/es/borderBox1'
-import BorderBox2 from '@jiaminghi/data-view-react/es/borderBox2'
+import Charts from '@jiaminghi/data-view-react/es/Charts'
+
+import MyLine from '../DataView/materialsComponents/Line'
 
 function Draggable(props) {
 
@@ -13,14 +14,15 @@ function Draggable(props) {
     });
     const style = {
         color: 'red',
+        cursor: 'point',
         transform: CSS.Translate.toString(transform),
     };
 
     return (
-        <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
             {/* eslint-disable-next-line react/prop-types */}
             {props.children}
-        </button>
+        </div>
     );
 }
 
@@ -28,7 +30,9 @@ function Droppable(props) {
     const { isOver, setNodeRef } = useDroppable({
         // eslint-disable-next-line react/prop-types
         id: props.id,
+
     });
+
     const style = {
         opacity: isOver ? 1 : 0.5,
     };
@@ -42,88 +46,147 @@ function Droppable(props) {
 }
 
 function Example() {
+    const option = {
+        title: {
+            text: '剩余油量表',
+            style: {
+                fill: '#fff'
+            }
+        },
+        series: [
+            {
+                type: 'gauge',
+                data: [{ name: 'itemA', value: 55 }],
+                center: ['50%', '55%'],
+                axisLabel: {
+                    formatter: '{value}%',
+                    style: {
+                        fill: '#fff'
+                    }
+                },
+                axisTick: {
+                    style: {
+                        stroke: '#fff'
+                    }
+                },
+                animationCurve: 'easeInOutBack'
+            }
+        ]
+    }
+    const Materials = [
+        { id: '11', title: '11', node: <MyLine /> },
+        { id: '22', title: '22', node: <span>node22</span> },
+        { id: '33', title: '33', node: <Charts style={{ minWidth: '300px', height: '300px' }} option={option} /> },
+        { id: '44', title: '44', node: <span>node44</span> },
+    ]
 
     const [DroppableList, setDroppableList] = useState([
-        { id: 'aa', title: '盒子a', children: [], BorderNode: (props) => <BorderBox1>{props}</BorderBox1> },
-        { id: 'bb', title: '盒子b', children: [], BorderNode: (props) => <BorderBox2>{props}</BorderBox2> },
+        { id: 'aa', title: '盒子a', children: [], BorderNode: (props) => <>{props}</> },
+        { id: 'bb', title: '盒子b', children: [], BorderNode: (props) => <>{props}</> },
+        { id: 'cc', title: '盒子c', children: [], BorderNode: (props) => <>{props}</> },
     ]);
 
-    const [DraggableObj, setDraggableObj] = useState([
-        { id: '11', title: '11' },
-        { id: '22', title: '22' },
-        { id: '33', title: '33' },
-        { id: '44', title: '44' },
-    ]);
-
-
-
-
+    const [DraggableObj, setDraggableObj] = useState([...Materials]);
 
     function handleDragEnd({ active, over }) {
 
         const activeId = active.id
         const overId = over?.id
 
-        const newDroppableList = map(DroppableList, (e) => {
-            e.children = pull(e.children, activeId)
-            if (e.id === overId) e.children = uniq([...e.children, activeId])
-            return e
-        })
+        // 1.将拖拽物料添加到盒子
+        const newDroppableList = AddItemChildrenListByID(activeId, overId, DroppableList)
         setDroppableList(newDroppableList)
 
-        if (!overId) { pushDraggableObj(activeId); console.log(11); return }
+
+        /**
+         * 如果模板盒子里面有数据，就过滤物料盒的项
+         * */
+
+        const List = map(DroppableList, 'children')
+        const flattenList = flatten([...List])
+        const flattenIDList = map(flattenList, 'id')
+        const res = []
+        Materials.forEach((e) => { if (!flattenIDList.includes(e.id)) res.push(e) })
+        setDraggableObj(res)
 
 
-        const list = map(DroppableList, 'children')
-        const onlyIdList = unionWith(list[0], list[1], isEqual);
-        const newDraggableObj = map(DraggableObj, (e) => { if (!onlyIdList.includes(e.id)) return e })
-        setDraggableObj(newDraggableObj.filter(Boolean))
-
-
+        // 物料挪出盒子就将物料添加到物料库
+        if (!overId) {
+            const newDraggableObj = AddItemByID(activeId, DraggableObj);
+            setDraggableObj(newDraggableObj)
+        }
     }
 
-    const pushDraggableObj = (id) => {
-        let cloneData = cloneDeep(DraggableObj)
-        cloneData = [...cloneData, { id: id, title: id }]
-        console.log('cloneData: ', cloneData);
+    /**
+     * 基于id添加元素到指定项的children数组
+     * */
+    const AddItemChildrenListByID = (id, overId, arr) => {
+        const item = getItemByID(id, Materials)
+        const newDroppableList = map(arr, (e) => {
+            e.children = _filter(e.children, (o) => o.id !== id)
+
+            // 是否多个
+            if (e.id === overId) e.children = uniq([item])
+            // if (e.id === overId) e.children = uniq([...e.children, item])
+
+            e.children = uniqBy(e.children, 'id')  // 去重
+            return e
+        })
+        return newDroppableList
+    }
+
+
+    /**
+     *  基于id在数组后面添加指定元素，并去重
+     * */
+    const AddItemByID = (id, arr) => {
+        const item = getItemByID(id, Materials)
+        let cloneData = cloneDeep(arr)
+        cloneData = [...cloneData, item]
+        // 根据id进行去重
         const newDraggableObj = uniqBy(cloneData, 'id')
-        console.log('newDraggableObj: ', newDraggableObj);
-        setDraggableObj(newDraggableObj)
+        return newDraggableObj
     }
+
+    /**
+     * 根据ID返回指定元素
+    */
+    const getItemByID = (id, arr) => find(arr, ['id', id])
 
 
     return (
         <DndContext onDragEnd={handleDragEnd} >
-            <div style={{ margin: '15px', height: '15px' }}>
+            <div style={{ margin: '15px', display: 'flex', height: '100px' }}>
                 {map(DraggableObj, (e) => {
-                    return <Draggable id={e.id}>
-                        {e.title}
+                    return <Draggable key={e.id} id={e.id}>
+                        {e.node || e.title}
                     </Draggable>
                 })}
             </div>
 
-            {map(DroppableList, (e) => {
+            <div style={{ display: 'flex' }}>
+                {map(DroppableList, (e) => {
+                    return <div key={e.id}>
+                        {e.BorderNode(
+                            <Droppable id={e.id}>
+                                <div style={{ minWidth: '100px', background: '#fff', marginTop: '15px', color: '#000', padding: '15px', overflow: 'hidden', marginLeft: '15px' }}>
+                                    <p> {e.title} </p>
 
-                return <>
-                    {e.BorderNode(
-                        <Droppable id={e.id}>
-                            <div style={{ width: '300px', height: '300px', background: 'pink', marginTop: '15px', color: '#000', padding: '15px' }}>
-                                <p>{e.title}</p>
-
-                                <div>
-                                    {map(e.children, (v) => {
-                                        return <Draggable id={v}>
-                                            {v}
-                                        </Draggable>
-                                    })}
+                                    <div>
+                                        {map(e.children, (v) => {
+                                            return <Draggable key={v.id} id={v.id}>
+                                                {v.node || v.title}
+                                            </Draggable>
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        </Droppable>
-                    )}
+                            </Droppable>
+                        )}
+                    </div>
+                })}
+            </div>
 
-                </>
-            })}
-        </DndContext>
+        </DndContext >
     );
 
 
@@ -136,7 +199,10 @@ function Example() {
 function DragDemo() {
 
 
-    return <Example />
+    return <div>
+        <Example />
+
+    </div>
 }
 
 

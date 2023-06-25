@@ -22,7 +22,7 @@ function MyLine() {
             shape: 'diamond',
         },
     };
-    return <Line {...config} />;
+    return <Line  {...config} style={{ width: '100%', height: '100%' }} />;
 }
 
 

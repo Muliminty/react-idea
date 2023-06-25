@@ -48,24 +48,24 @@ function Home() {
 
             <div className={style.buttonBox}>
                 <button onClick={() => {
-                    // 
                     navigate("/baiduMap");
                 }}>百度地图</button>
 
                 <button onClick={() => {
-                    // 
                     navigate("/TableDemo");
                 }}>TableDemo</button>
 
                 <button onClick={() => {
-                    // 
                     navigate("/EchartDemo");
                 }}>EchartDemo</button>
 
                 <button onClick={() => {
-                    // 
                     navigate("/DragDemo");
-                }}>DragDemo</button>
+                }}>拖拽demo</button>
+
+                <button onClick={() => {
+                    navigate("/DataView");
+                }}>数据大屏</button>
             </div>
 
         </div>

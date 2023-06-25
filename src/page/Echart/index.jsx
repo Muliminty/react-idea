@@ -1,5 +1,5 @@
 import style from './style.module.scss'
-import MyLine from './Line'
+// import MyLine from './Line'
 // import DemoFlowchart from './DemoFlowchart'
 // import DemoConversionDagreGraph from './DemoConversionDagreGraph'
 import DemoDecompositionTreeGraph from './DemoDecompositionTreeGraph'
@@ -21,7 +21,7 @@ function EchartDemo() {
             </Col>
             <Col span={8}>
                 <Card size='small' title="Line" bordered={false}>
-                    <MyLine />
+                    {/* <MyLine /> */}
                 </Card>
             </Col>
 
