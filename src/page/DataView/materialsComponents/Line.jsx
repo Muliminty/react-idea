@@ -22,7 +22,9 @@ function MyLine() {
             shape: 'diamond',
         },
     };
-    return <Line  {...config} style={{ width: '100%', height: '100%' }} />;
+    return <div style={{ width: '100%', height: '100%' }}>
+        <Line style={{ height: '95%' }} {...config} />
+    </div>
 }
 
 

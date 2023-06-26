@@ -13,7 +13,7 @@ function Draggable(props) {
 
     return (
         // eslint-disable-next-line react/prop-types
-        <div className={`draggable_box ${props.className || ''}`} ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        <div className={`${props.className || ''}`} ref={setNodeRef} style={style} {...listeners} {...attributes}>
             {/* eslint-disable-next-line react/prop-types */}
             {props.children}
         </div>
