@@ -94,11 +94,7 @@ function DataView() {
         const item = getItemByID(id, materialsList)
         const newShowList = map(arr, (e) => {
             e.children = _filter(e.children, (o) => o.id !== id)
-
-            // 是否多个
             if (e.id === overId) e.children = uniq([item])
-            // if (e.id === overId) e.children = uniq([...e.children, item])
-
             e.children = uniqBy(e.children, 'id')  // 去重
             return e
         })
@@ -124,17 +120,18 @@ function DataView() {
     const getItemByID = (id, arr) => find(arr, ['id', id])
 
 
-    const sensors = useSensors(useSensor(PointerSensor, {
-        activationConstraint: {
-            delay: 200, // 长按0.2s拖拽
-            tolerance: 0,
-        }
-    }))
+    // const sensors = useSensors(useSensor(PointerSensor, {
+    //     activationConstraint: {
+    //         delay: 200, // 长按0.2s拖拽
+    //         tolerance: 0,
+    //     }
+    // }))
 
     return <div className={style.DataView}>
-        <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+        <DndContext onDragEnd={handleDragEnd}
+        // sensors={sensors}
+        >
             <Material list={materialList} />
-
             <Show list={showList} />
         </DndContext>
     </div >
@@ -146,6 +143,7 @@ const Material = ({ list = [] }) => {
 
     return <div className={style.material}>
         {map(list, (e) => {
+
             return <Draggable key={e.id} id={e.id}>
                 <Card
                     title={e.title}
@@ -169,67 +167,55 @@ const Show = ({ list = [] }) => {
             <Decoration8 reverse={true} style={{ width: '25%', height: '70px' }} />
             <div className={style.show_header_title}>物联网数据统计平台</div>
         </div>
-
         <Decoration10 style={{ width: '100%', height: '3px' }} />
-
         <div className={style.show_content}>
             <div className={style.item1}>
                 <BorderBox3>
                     {map(list, (e, i) => {
                         if (i < 3) return <>
                             <Droppable id={e.id} className='droppable droppable1'>
-                                <Draggable className='draggable' >
-                                    {map(e.children, (v) => {
-                                        return <Draggable key={v.id} id={v.id}>
-                                            <div className={style.title}>
-                                                {v.title}
-                                            </div>
-                                            {v.node || v.title}
-                                        </Draggable>
-                                    })}
-                                </Draggable>
+                                {map(e.children, (v) => {
+                                    return <Draggable key={v.id} id={v.id}>
+                                        <div className={style.title}>
+                                            {v.title}
+                                        </div>
+                                        {v.node || v.title}
+                                    </Draggable>
+                                })}
                             </Droppable>
                         </>
                     })}
                 </BorderBox3>
             </div>
-
-
-
-
-
             <div className={style.item2}>
                 {map(list, (e, i) => {
                     if (i >= 3 && i < 5) return <Droppable id={e.id} className='droppable droppable2'>
-                        {e.BorderNode(<Draggable className='draggable' >
-                            {map(e.children, (v) => {
+                        {e.BorderNode(
+                            map(e.children, (v) => {
                                 return <Draggable key={v.id} id={v.id}>
                                     <div className={style.title}>
                                         {v.title}
                                     </div>
                                     {v.node || v.title}
                                 </Draggable>
-                            })}
-                        </Draggable>)}
-
+                            })
+                        )}
                     </Droppable>
                 })}
             </div>
-
             <div className={style.item3}>
                 {map(list, (e, i) => {
                     if (i > 5) return <Droppable id={e.id} className='droppable droppable2'>
-                        {e.BorderNode(<Draggable className='draggable' >
-                            {map(e.children, (v) => {
+                        {e.BorderNode(
+                            map(e.children, (v) => {
                                 return <Draggable key={v.id} id={v.id}>
                                     <div className={style.title}>
                                         {v.title}
                                     </div>
                                     {v.node || v.title}
                                 </Draggable>
-                            })}
-                        </Draggable>)}
-
+                            })
+                        )}
                     </Droppable>
                 })}
             </div>
