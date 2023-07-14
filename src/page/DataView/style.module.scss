@@ -1,17 +1,14 @@
 .DataView {
+    display: flex;
     padding: 16px;
     height: 100vh;
+    width: 100%;
     background: #fff;
     color: #01e1cb;
 
-    display: flex;
-
-    >div:nth-child(2) {
-        flex: 1;
-    }
 
     .material {
-        width: 30%;
+        width: 300px;
         max-width: 300px;
         background-color: pink;
         height: 100%;
@@ -22,6 +19,7 @@
 
         :global {
             .ant-card-body {
+                position: relative;
                 height: 200px;
                 overflow: hidden;
                 padding: 10px;
@@ -30,12 +28,15 @@
 
             .DraggableBox {
                 height: 265px;
+                transition: all 0.2s;
             }
         }
 
     }
 
     .show {
+        width: 100%;
+        flex: 1;
         height: 100%;
         background-color: #0b122e;
         overflow: hidden;
@@ -160,6 +161,21 @@
 
 
     :global {
+        .zindex {
+            z-index: 10000;
+        }
+
+        .btn {
+            position: absolute;
+            z-index: 100;
+            right: 15;
+        }
+
+        .fullScreen {
+            .handle {
+                display: none;
+            }
+        }
 
         .DraggableBox {
             position: relative;
@@ -175,7 +191,12 @@
             top: 0;
             right: 0;
             cursor: pointer;
+            transition: all 0.1s;
         }
 
+        .isHover {
+            transform: scale(1.2);
+            background-color: #01e1cb;
+        }
     }
 }

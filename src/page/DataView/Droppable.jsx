@@ -10,7 +10,8 @@ function Droppable(props) {
         opacity: !isOver ? 1 : 0.5,
         background: isOver ? "#fff" : '',
         transition: 'all 0.3s',
-        transform: isOver ? 'translateY(2)' : 'translateY(0)'
+        transform: isOver ? 'translateY(2)' : 'translateY(0)',
+        zIndex: '0'
     };
 
     return (

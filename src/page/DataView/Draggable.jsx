@@ -2,10 +2,10 @@ import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 
 function Draggable(props) {
-    console.log('props: ', props);
-    const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+    const { attributes, listeners, setNodeRef, transform, isDragging, } = useDraggable({
         // eslint-disable-next-line react/prop-types
         id: props.id,
+        disabled: false, // 是否允许拖拽
     });
     const style = {
         transform: CSS.Translate.toString(transform),
@@ -13,14 +13,13 @@ function Draggable(props) {
 
     return (
         // eslint-disable-next-line react/prop-types
-        <div className={`${props.className || ''} DraggableBox`} ref={setNodeRef} style={style}  {...attributes}>
+        <div className={`${props.className || ''} DraggableBox`} ref={setNodeRef} style={style} id={props.id} {...attributes}>
             {/* eslint-disable-next-line react/prop-types */}
             {props.children}
             <div
-                // listeners 在哪个元素 ，哪个元素就可拖拽
                 {...listeners}
-                className='handle'
-                style={isDragging ? { background: 'rgb(229, 255, 0)' } : {}}>
+                className={`handle ${isDragging ? 'isHover' : ''}`}
+            >
             </div>
         </div>
     );

@@ -68,7 +68,7 @@ function CircularChart() {
     };
     return <>
 
-        <Pie {...config} />
+        <Pie {...config} style={{ height: '90%' }} />
     </>
 }
 
