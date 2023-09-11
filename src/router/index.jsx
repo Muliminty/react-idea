@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     //     element: <BaiduMap />
     // },
     {
-        title: 'antd 表格',
+        title: '表格可拖拽',
         path: "/TableDemo",
         element: <TableDemo />
     },
