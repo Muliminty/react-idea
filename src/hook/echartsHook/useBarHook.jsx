@@ -18,11 +18,11 @@ const useBarHook = ({
   // 使用useMemo函数，用于在组件内部使用缓存
   const option = useMemo(() => {
     // 如果xAxis参数为false，则x轴不可用，否则按照series参数判断
-    const xAxisConfig = (xAxis!== false && (Array.isArray(series) || series.length === 1))? { type: 'category', data: dataX } : xAxis;
+    const xAxisConfig = (xAxis !== false && (Array.isArray(series) || series.length === 1)) ? { type: 'category', data: dataX } : xAxis;
     // 如果yAxis参数为false，则y轴不可用，否则设置为undefined
-    const yAxisConfig = (yAxis!== false)? yAxis : undefined;
+    const yAxisConfig = (yAxis !== false) ? yAxis : undefined;
     // 如果series参数为数组，则按照series参数判断，否则设置为series
-    const seriesConfig = Array.isArray(series)? series : [series];
+    const seriesConfig = Array.isArray(series) ? series : [series];
     // 返回option参数
     return {
       ...(xAxisConfig && { xAxis: xAxisConfig }),
@@ -32,7 +32,7 @@ const useBarHook = ({
         if (index === 0 && seriesConfig.length === 1) {
           return {
             ...s,
-            data: Array.isArray(series)? dataY : s.data
+            data: s.data.length > 0 ? s.data : dataY
           };
         }
         // 返回s
