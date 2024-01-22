@@ -10,6 +10,7 @@ import EchartDemo from '../page/Echart/index'
 import DragDemo from '../page/DragDemo/index'
 import DataView from '../page/DataView/index'
 import AntdBox from '../page/antd/index'
+import MdEditor from '../page/Vditor/index'
 
 // import BaiduMap from '../page/BaiduMap/index'
 
@@ -49,6 +50,12 @@ const router = createBrowserRouter([
         path: "/AntdBox",
         element: <AntdBox />
     },
+    {
+        title: 'markdown编辑器',
+        path: "/MdEditor",
+        element: <MdEditor />
+    },
+
 ]);
 
 

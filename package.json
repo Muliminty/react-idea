@@ -23,7 +23,9 @@
     "react": "^18.2.0",
     "react-bmapgl": "^0.2.20",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2"
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.11.2",
+    "vditor": "^3.9.8"
   },
   "devDependencies": {
     "@types/bmapgl": "0.0.7",
