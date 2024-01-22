@@ -83,28 +83,11 @@ function MarkdownPreviewer({ markdown }) {
           id: 'my-vditor', // 添加这一行
         },
         toolbar: [],
-        // toolbar: [{
-        //   hotkey: '0',
-        //   name: 'sponsor',
-        //   tipPosition: 's',
-        //   tip: '成为赞助者',
-        //   className: 'right',
-        //   icon: '0',
-        //   click() { alert('捐赠地址：https://ld246.com/sponsor') },
-        // }],
         after: () => {
           vditorRef.current.setValue(markdown);
-          vditorRef.current.disabled();
-
-          const evt = document.createEvent('Event');
-          evt.initEvent('click', true, true);
-          vditorRef?.current?.vditor?.toolbar?.elements.preview.firstElementChild.dispatchEvent(evt);
+          vditorRef.current.disabled();// 禁用 
         },
-        // renderMarkdown(md) {
-        //   Vditor.preview(document.getElementById("preview"), md, {
-        //     hljs: { style: "github" },
-        //   });
-        // },
+
       });
     }
     // 设置预览模式
