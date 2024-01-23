@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Vditor from 'vditor';
 import "vditor/dist/index.css";
-
 import './index.css'
 
 
@@ -71,7 +70,6 @@ const MdEditor = () => {
 
 // eslint-disable-next-line react/prop-types
 function MarkdownPreviewer({ markdown }) {
-  console.log('markdown: ', markdown);
   const ref = useRef();
   const vditorRef = useRef();
 
@@ -99,5 +97,4 @@ function MarkdownPreviewer({ markdown }) {
     <div ref={ref} />
   </div>;
 }
-
 export default MdEditor;
