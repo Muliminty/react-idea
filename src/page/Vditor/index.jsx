@@ -7,6 +7,7 @@ import './index.css'
 const MdEditor = () => {
   // eslint-disable-next-line react/prop-types
   const editorRef = useRef(null);
+  const vditorRef = useRef();
 
   const [value, setValue] = useState('# Hello, Vditor!');
 
@@ -16,7 +17,7 @@ const MdEditor = () => {
   }
 
   useEffect(() => {
-    new Vditor(editorRef.current, {
+    vditorRef.current = new Vditor(editorRef.current, {
       value, // 初始值，通常是Markdown文本
       input: (value) => onChange(value), // 输入回调函数，当编辑器的内容发生变化时调用
       cache: { id: 'vditor' }, // 缓存设置，id用于区分不同的Vditor实例
@@ -46,6 +47,12 @@ const MdEditor = () => {
     })
   }, []) // 空依赖数组，确保Vditor只在组件挂载时初始化一次
 
+  // 插入内容 只有预留插入图片的位置
+  const insertContent = () => {
+    vditorRef.current.insertValue('111');
+    console.log('vditorRef.current.getHTML(): ', vditorRef.current.getHTML());
+
+  };
 
   return (
 
@@ -59,6 +66,8 @@ const MdEditor = () => {
       <div style={{ height: '500px', width: '500px' }}>
         <div className="markdown-editor" ref={editorRef}>
         </div>
+
+        <button onClick={insertContent}>Insert Content</button>
       </div>
 
       <MarkdownPreviewer markdown={value} />
