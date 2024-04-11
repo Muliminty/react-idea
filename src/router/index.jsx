@@ -11,6 +11,7 @@ import DragDemo from '../page/DragDemo/index'
 import DataView from '../page/DataView/index'
 import AntdBox from '../page/antd/index'
 import MdEditor from '../page/Vditor/index'
+import GenerateCode from '../page/generateCode/index'
 
 // import BaiduMap from '../page/BaiduMap/index'
 
@@ -55,7 +56,11 @@ const router = createBrowserRouter([
         path: "/MdEditor",
         element: <MdEditor />
     },
-
+    {
+        title: '代码生成器',
+        path: "/GenerateCode",
+        element: <GenerateCode />
+    },
 ]);
 
 
