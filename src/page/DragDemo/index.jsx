@@ -2,7 +2,7 @@ import { map, uniq, flatten, cloneDeep, uniqBy, find, filter as _filter } from '
 import { useState } from 'react';
 import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-import Charts from '@jiaminghi/data-view-react/es/Charts'
+// import Charts from '@jiaminghi/data-view-react/es/Charts'
 
 import MyLine from '../DataView/materialsComponents/Line'
 
@@ -76,7 +76,7 @@ function Example() {
     const Materials = [
         { id: '11', title: '11', node: <MyLine /> },
         { id: '22', title: '22', node: <span>node22</span> },
-        { id: '33', title: '33', node: <Charts style={{ minWidth: '300px', height: '300px' }} option={option} /> },
+        // { id: '33', title: '33', node: <Charts style={{ minWidth: '300px', height: '300px' }} option={option} /> },
         { id: '44', title: '44', node: <span>node44</span> },
     ]
 

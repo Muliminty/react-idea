@@ -8,10 +8,10 @@ import App from "../App";
 import TableDemo from '../page/Table/index'
 import EchartDemo from '../page/Echart/index'
 import DragDemo from '../page/DragDemo/index'
-import DataView from '../page/DataView/index'
+// import DataView from '../page/DataView/index'
 import AntdBox from '../page/antd/index'
 import MdEditor from '../page/Vditor/index'
-import GenerateCode from '../page/generateCode/index'
+// import GenerateCode from '../page/generateCode/index'
 
 // import BaiduMap from '../page/BaiduMap/index'
 
@@ -41,11 +41,11 @@ const router = createBrowserRouter([
         path: "/DragDemo",
         element: <DragDemo />
     },
-    {
-        title: '数据大屏demo',
-        path: "/DataView",
-        element: <DataView />
-    },
+    // {
+    //     title: '数据大屏demo',
+    //     path: "/DataView",
+    //     element: <DataView />
+    // },
     {
         title: 'antd',
         path: "/AntdBox",
@@ -56,11 +56,11 @@ const router = createBrowserRouter([
         path: "/MdEditor",
         element: <MdEditor />
     },
-    {
-        title: '代码生成器',
-        path: "/GenerateCode",
-        element: <GenerateCode />
-    },
+    // {
+    //     title: '代码生成器',
+    //     path: "/GenerateCode",
+    //     element: <GenerateCode />
+    // },
 ]);
 
 

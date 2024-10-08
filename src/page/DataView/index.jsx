@@ -11,13 +11,13 @@ import MyLine from './materialsComponents/Line'
 import PieChart from './materialsComponents/PieChart'
 import CircularChart from './materialsComponents/CircularChart'
 
-import Decoration8 from '@jiaminghi/data-view-react/es/Decoration8'
-import Decoration5 from '@jiaminghi/data-view-react/es/Decoration5'
-import Decoration10 from '@jiaminghi/data-view-react/es/Decoration10'
-import BorderBox3 from '@jiaminghi/data-view-react/es/BorderBox3'
-import BorderBox4 from '@jiaminghi/data-view-react/es/BorderBox4'
-import BorderBox5 from '@jiaminghi/data-view-react/es/BorderBox5'
-import BorderBox8 from '@jiaminghi/data-view-react/es/BorderBox8'
+// import Decoration8 from '@jiaminghi/data-view-react/es/Decoration8'
+// import Decoration5 from '@jiaminghi/data-view-react/es/Decoration5'
+// import Decoration10 from '@jiaminghi/data-view-react/es/Decoration10'
+// import BorderBox3 from '@jiaminghi/data-view-react/es/BorderBox3'
+// import BorderBox4 from '@jiaminghi/data-view-react/es/BorderBox4'
+// import BorderBox5 from '@jiaminghi/data-view-react/es/BorderBox5'
+// import BorderBox8 from '@jiaminghi/data-view-react/es/BorderBox8'
 
 function DataView() {
 
@@ -237,15 +237,15 @@ const Show = ({ list = [] }) => {
         {!isFullScreen && <Button className='btn' onClick={fullScreen}>预览</Button>}
         {/* {isFullScreen && <Button className='btn' onClick={exitFullScreen}>t</Button>} */}
         <div className={style.show_header}>
-            <Decoration8 style={{ width: '25%', height: '70px' }} />
-            <Decoration5 style={{ width: '40%', height: '100px' }} />
-            <Decoration8 reverse={true} style={{ width: '25%', height: '70px' }} />
+            {/* <Decoration8 style={{ width: '25%', height: '70px' }} /> */}
+            {/* <Decoration5 style={{ width: '40%', height: '100px' }} /> */}
+            {/* <Decoration8 reverse={true} style={{ width: '25%', height: '70px' }} /> */}
             <div className={style.show_header_title}>物联网数据统计平台</div>
         </div>
-        <Decoration10 style={{ width: '100%', height: '3px' }} />
+        {/* <Decoration10 style={{ width: '100%', height: '3px' }} /> */}
         <div className={style.show_content}>
             <div className={style.item1}>
-                <BorderBox3>
+                {/* <BorderBox3>
                     {map(list, (e, i) => {
                         if (i < 3) return <>
                             <Droppable id={e.id} className='droppable droppable1'>
@@ -261,7 +261,7 @@ const Show = ({ list = [] }) => {
                             </Droppable>
                         </>
                     })}
-                </BorderBox3>
+                </BorderBox3> */}
             </div>
             <div className={style.item2}>
                 {map(list, (e, i) => {
