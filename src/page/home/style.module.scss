@@ -24,7 +24,14 @@
     }
 
     .buttonBox {
-        margin-top: 15px;
-        width: 240px;
+        display: flex;
+        width: 60vw;
+        flex-wrap: wrap;
+
+        button {
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
     }
 }

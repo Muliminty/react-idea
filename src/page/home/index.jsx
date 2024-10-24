@@ -71,6 +71,7 @@ const ButtonBox = () => {
             {buttonConfig.map((button, i) => (
                 <>
                     <Animation ref={AnimationLiRef} type='flipInY' key={i}>
+
                         <button key={button.route} onClick={() => handleButtonClick(button.route)}>
                             {button.text}
                         </button>

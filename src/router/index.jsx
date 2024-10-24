@@ -15,11 +15,18 @@ import MdEditor from '../page/Vditor/index'
 
 // import BaiduMap from '../page/BaiduMap/index'
 
+import Admin from '../page/admin/index'
+
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />
+    },
+    {
+        title: '小功能整理',
+        path: "/Admin",
+        element: <Admin />
     },
     // {
     //     title: '百度地图',
@@ -56,6 +63,7 @@ const router = createBrowserRouter([
         path: "/MdEditor",
         element: <MdEditor />
     },
+
     // {
     //     title: '代码生成器',
     //     path: "/GenerateCode",
