@@ -22,30 +22,30 @@ const menuData = [
     title: 'demo卡片',
     content: <DemoCard />,
   },
-  {
-    key: '2',
-    icon: <VideoCameraOutlined />,
-    title: 'Media',
-    content: 'Media management content goes here',
-    subMenu: [
-      {
-        key: '2-1',
-        title: 'Video Management',
-        content: 'Video management section',
-      },
-      {
-        key: '2-2',
-        title: 'Audio Management',
-        content: 'Audio management section',
-      },
-    ],
-  },
-  {
-    key: '3',
-    icon: <UploadOutlined />,
-    title: 'Upload',
-    content: 'Upload management content goes here',
-  },
+  // {
+  //   key: '2',
+  //   icon: <VideoCameraOutlined />,
+  //   title: 'Media',
+  //   content: 'Media management content goes here',
+  //   subMenu: [
+  //     {
+  //       key: '2-1',
+  //       title: 'Video Management',
+  //       content: 'Video management section',
+  //     },
+  //     {
+  //       key: '2-2',
+  //       title: 'Audio Management',
+  //       content: 'Audio management section',
+  //     },
+  //   ],
+  // },
+  // {
+  //   key: '3',
+  //   icon: <UploadOutlined />,
+  //   title: 'Upload',
+  //   content: 'Upload management content goes here',
+  // },
 ];
 
 function Admin() {
