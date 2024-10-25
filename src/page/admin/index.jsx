@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
 } from '@ant-design/icons';
 import style from './style.module.scss';
 import DemoCard from './components/DemoCard'
+import TileLayout from './components/TileLayout'
+import HomeLayout from './components/homeLayout'
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -22,36 +22,31 @@ const menuData = [
     title: '主页项目卡片demo',
     content: <DemoCard />,
   },
-  // {
-  //   key: '2',
-  //   icon: <VideoCameraOutlined />,
-  //   title: 'Media',
-  //   content: 'Media management content goes here',
-  //   subMenu: [
-  //     {
-  //       key: '2-1',
-  //       title: 'Video Management',
-  //       content: 'Video management section',
-  //     },
-  //     {
-  //       key: '2-2',
-  //       title: 'Audio Management',
-  //       content: 'Audio management section',
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: '3',
-  //   icon: <UploadOutlined />,
-  //   title: 'Upload',
-  //   content: 'Upload management content goes here',
-  // },
+  {
+    key: '2',
+    title: '布局',
+    content: 'Media management content goes here',
+    subMenu: [
+      {
+        key: '1231',
+        icon: '',
+        title: '磁贴布局',
+        content: <TileLayout />,
+      },
+      {
+        key: '2-2',
+        title: '首页布局',
+        content: <HomeLayout />,
+      },
+    ],
+  },
+
 ];
 
 function Admin() {
   const [collapsed, setCollapsed] = useState(false);
   const [content, setContent] = useState(() => {
-    return <DemoCard />
+    return <HomeLayout />
   }); // 动态内容区域
 
   const toggle = () => {

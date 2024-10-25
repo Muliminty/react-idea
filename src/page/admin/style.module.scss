@@ -1,7 +1,5 @@
 .layout {
-    width: 100%;
     height: 100vh; // 设置布局的高度占满整个页面
-    background-color: white;
 }
 
 .trigger {
@@ -21,7 +19,8 @@
 
 .content {
     color: #333;
-    width: 100%;
     // background-color: red;
     padding: 24px;
+
+    overflow-y: scroll;
 }
