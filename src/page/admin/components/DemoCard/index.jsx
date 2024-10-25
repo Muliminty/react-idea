@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Card, Modal } from 'antd';
 import AnimatedTreeMenu from '../DemoItem/AnimatedTreeMenu'
+import InteractiveSphere from '../DemoItem/InteractiveSphere'
+
 const demos = [
     {
         title: '树结构目录',
         key: 'toc',
         description: 'tree',
         content: <AnimatedTreeMenu />,
+    },
+    {
+        title: '星球效果',
+        key: 'InteractiveSphere',
+        description: 'WebGL实现星球效果',
+        content: <InteractiveSphere />,
     }
     // 你可以继续添加更多的卡片
 ];
