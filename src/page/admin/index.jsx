@@ -8,17 +8,19 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 import style from './style.module.scss';
+import DemoCard from './components/DemoCard'
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+
 
 // 导航菜单数据
 const menuData = [
   {
     key: '1',
     icon: <UserOutlined />,
-    title: 'User',
-    content: 'User management content goes here',
+    title: 'demo卡片',
+    content: <DemoCard />,
   },
   {
     key: '2',
@@ -104,10 +106,10 @@ function Admin() {
         </Header>
 
         {/* 面包屑导航 */}
-        <Breadcrumb style={{ margin: '16px 0' }}>
+        {/* <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>Admin</Breadcrumb.Item>
-        </Breadcrumb>
+        </Breadcrumb> */}
 
         {/* 主内容区域 */}
         <Content
@@ -118,12 +120,13 @@ function Admin() {
             minHeight: 280,
           }}
         >
-          <h1>Dynamic Content</h1>
           <p>{content}</p>
         </Content>
       </Layout>
     </Layout>
   );
 }
+
+
 
 export default Admin;
