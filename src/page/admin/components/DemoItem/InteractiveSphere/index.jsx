@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-// import * as THREE from 'three';
+import * as THREE from 'three';
 
 const InteractiveSphere = () => {
   const mountRef = useRef(null); // 用于保存 canvas 的引用
+  const rendererRef = useRef(null); // 用于保存 renderer 的引用
 
   useEffect(() => {
     // 初始化场景、相机和渲染器
@@ -20,8 +21,9 @@ const InteractiveSphere = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
-    
+
     mountRef.current.appendChild(renderer.domElement);
+    rendererRef.current = renderer; // 保存 renderer 引用
 
     // 半透明球体
     const sphereGeometry = new THREE.SphereGeometry(4.85, 16, 16);
@@ -57,23 +59,18 @@ const InteractiveSphere = () => {
     // 小球体
     const smallBallGeometry = new THREE.SphereGeometry(0.15, 16, 16);
     const smallBalls = [];
-    const labelSprites = [];
-
     const radius = 5;
     const numPoints = 88;
     const goldenRatio = (1 + Math.sqrt(5)) / 2;
 
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-
-    // 添加小球体和标签
+    // 添加小球体
     for (let i = 0; i < numPoints; i++) {
       const y = 1 - (i / (numPoints - 1)) * 2;
       const radiusAtY = Math.sqrt(1 - y * y);
       const theta = (2 * Math.PI * i) / goldenRatio;
       const x = Math.cos(theta) * radiusAtY;
       const z = Math.sin(theta) * radiusAtY;
-      
+
       const smallBallMaterial = new THREE.MeshBasicMaterial({
         color: getRandomBrightColor(),
         depthWrite: true,
@@ -94,23 +91,15 @@ const InteractiveSphere = () => {
     scene.add(directionalLight);
 
     const autoRotationSpeed = 0.0005;
-    let autoRotationAxis = new THREE.Vector3(0, 1, 0).normalize();
-    let currentAngularVelocity = autoRotationAxis.clone().multiplyScalar(autoRotationSpeed);
+    let currentAngularVelocity = new THREE.Vector3(0, 1, 0).normalize().multiplyScalar(autoRotationSpeed);
 
     // 渲染循环
     const animate = () => {
       requestAnimationFrame(animate);
-
-      // 自动旋转
-      const deltaQuat = new THREE.Quaternion().setFromEuler(
-        new THREE.Euler(
-          currentAngularVelocity.x,
-          currentAngularVelocity.y,
-          currentAngularVelocity.z,
-          'XYZ'
-        )
+      sphere.quaternion.multiplyQuaternions(
+        new THREE.Quaternion().setFromEuler(new THREE.Euler(currentAngularVelocity.x, currentAngularVelocity.y, currentAngularVelocity.z)),
+        sphere.quaternion
       );
-      sphere.quaternion.multiplyQuaternions(deltaQuat, sphere.quaternion);
       renderer.render(scene, camera);
     };
     animate();
@@ -119,21 +108,24 @@ const InteractiveSphere = () => {
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      const renderer = rendererRef.current; // 从引用中获取 renderer
+      if (renderer) {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
     };
     window.addEventListener('resize', handleResize);
 
     return () => {
       // 清除事件监听器
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement); // 移除渲染器
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement); // 移除渲染器
+      }
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />;
+  return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
 };
-
-export default InteractiveSphere;
 
 // 辅助函数：获取随机颜色
 function getRandomBrightColor() {
@@ -186,4 +178,4 @@ function hslToRgb(h, s, l) {
   };
 }
 
-
+export default InteractiveSphere;

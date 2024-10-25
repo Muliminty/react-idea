@@ -19,7 +19,7 @@ const menuData = [
   {
     key: '1',
     icon: <UserOutlined />,
-    title: 'demo卡片',
+    title: '主页项目卡片demo',
     content: <DemoCard />,
   },
   // {
@@ -50,7 +50,9 @@ const menuData = [
 
 function Admin() {
   const [collapsed, setCollapsed] = useState(false);
-  const [content, setContent] = useState('Select a menu to display its content'); // 动态内容区域
+  const [content, setContent] = useState(() => {
+    return <DemoCard />
+  }); // 动态内容区域
 
   const toggle = () => {
     setCollapsed(!collapsed);

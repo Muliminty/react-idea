@@ -52,6 +52,7 @@ export default function DemoCard(props) {
 
             {/* Modal 部分 */}
             <Modal
+                destroyOnClose={true}
                 title={modalTitle}
                 open={isModalVisible}
                 onOk={handleModalClose}
