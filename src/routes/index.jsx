@@ -1,7 +1,7 @@
 import Home from '@/page/home';
 import About from '@/page/about';
 import Admin from '@/page/admin';
-
+import HomeLayout from '@/page/admin/components/homeLayout'
 const routes = [
   {
     path: '/',
@@ -18,6 +18,11 @@ const routes = [
     path: '/admin',
     component: Admin,
   },
+  {
+    title: 'HomeLayout',
+    path: '/admin/home',
+    component: HomeLayout,
+  }
 ];
 
 export default routes;

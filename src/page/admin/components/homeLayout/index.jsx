@@ -1,84 +1,156 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './HomePage.scss'; // 引入样式文件
 
-const Panel = ({ xPos, yPos, title, onNavigate }) => {
-  return (
-    <div className="panel" data-x-pos={xPos} data-y-pos={yPos}>
-      <span className="panel__nav panel__nav--up js-up" onClick={() => onNavigate(0, 1)}>up</span>
-      <span className="panel__nav panel__nav--right-top js-up js-right" onClick={() => onNavigate(1, 1)}>up/right</span>
-      <span className="panel__nav panel__nav--left-top js-up js-left" onClick={() => onNavigate(-1, 1)}>up/left</span>
-      <span className="panel__nav panel__nav--left js-left" onClick={() => onNavigate(-1, 0)}>left</span>
-      <span className="panel__nav panel__nav--right js-right" onClick={() => onNavigate(1, 0)}>right</span>
-      <span className="panel__nav panel__nav--right-down js-down js-right" onClick={() => onNavigate(1, -1)}>down/right</span>
-      <span className="panel__nav panel__nav--left-down js-down js-left" onClick={() => onNavigate(-1, -1)}>down/left</span>
-      <span className="panel__nav panel__nav--down js-down" onClick={() => onNavigate(0, -1)}>down</span>
-      <h1>{title}</h1>
-    </div>
-  );
-};
+function HomeLayout() {
+  const [animation, setAnimation] = useState('animate--none');
+  const [isZoomedOut, setIsZoomedOut] = useState(false);
+  const [posX, setPosX] = useState(0);
+  const [posY, setPosY] = useState(0);
 
-const PanelWrap = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const wrapRef = useRef(null);
-  const [animationClass, setAnimationClass] = useState('');
 
   useEffect(() => {
     if (wrapRef.current) {
-      wrapRef.current.style.transform = `translateX(${position.x * 100}%) translateY(${position.y * 100}%)`;
+      wrapRef.current.style.transform = `translateX(${posX * 100}%) translateY(${posY * 100}%)`;
     }
-  }, [position]);
+  }, [posX, posY]);
 
-  const movePanel = (dx, dy) => {
-    setAnimationClass('animate');
-    setPosition(prev => ({
-      x: prev.x + dx,
-      y: prev.y + dy
-    }));
-    setTimeout(() => setAnimationClass(''), 600);
+  const moveUp = () => setPosY((y) => y + 1);
+  const moveDown = () => setPosY((y) => y - 1);
+  const moveLeft = () => setPosX((x) => x + 1);
+  const moveRight = () => setPosX((x) => x - 1);
+
+  const toggleZoom = () => {
+    setIsZoomedOut(!isZoomedOut);
   };
 
-  const handleAnimationToggle = (animation) => {
-    setAnimationClass(animation);
-  };
-
-  const zoomOut = () => {
-    document.querySelector('.site-wrap').classList.add('show-all');
-  };
-
-  const zoomIn = () => {
-    document.querySelector('.site-wrap').classList.remove('show-all');
+  const setPanelAndZoom = (x, y) => {
+    if (!isZoomedOut) return;
+    setPosX(x);
+    setPosY(y);
+    setIsZoomedOut(false);
   };
 
   return (
-    <div className={`panel-wrap ${animationClass}`} ref={wrapRef}>
-      <Panel xPos={0} yPos={0} title="Main" onNavigate={movePanel} />
-      <Panel xPos={0} yPos={1} title="Up" onNavigate={movePanel} />
-      <Panel xPos={-1} yPos={1} title="Up Left" onNavigate={movePanel} />
-      <Panel xPos={1} yPos={1} title="Up Right" onNavigate={movePanel} />
-      <Panel xPos={-1} yPos={0} title="Left" onNavigate={movePanel} />
-      <Panel xPos={-1} yPos={-1} title="Down Left" onNavigate={movePanel} />
-      <Panel xPos={1} yPos={-1} title="Down Right" onNavigate={movePanel} />
-      <Panel xPos={1} yPos={0} title="Right" onNavigate={movePanel} />
-      <Panel xPos={0} yPos={-1} title="Down" onNavigate={movePanel} />
-      <Panel xPos={0} yPos={-2} title="Down 2" onNavigate={movePanel} />
-      <span className="panel__zoom js-zoom" onClick={zoomOut}>View All</span>
-      <div className="panel__animation-list">
-        {['animate--none', 'animate--shrink', 'animate--tilt', 'animate--tilt2'].map((animation, index) => (
-          <span key={index} className={`js-animation ${animationClass === animation ? 'active' : ''}`} onClick={() => handleAnimationToggle(animation)}>
-            {animation.replace('animate--', '')}
-          </span>
-        ))}
+    <div className="HomeLayout">
+      <div className={`site-wrap ${isZoomedOut ? 'show-all' : ''}`}>
+        <div className={`panel-wrap ${animation}`} ref={wrapRef}>
+          <Panel
+            xPos={0}
+            yPos={0}
+            label="Main"
+            onMoveUp={moveUp}
+            onMoveDown={moveDown}
+            onMoveLeft={moveLeft}
+            onMoveRight={moveRight}
+            onZoom={toggleZoom}
+            // onAnimationChange={setAnimation}
+            onSetPanelAndZoom={setPanelAndZoom}
+          />
+          <Panel xPos={0} yPos={1} label="Up" onMoveDown={moveDown} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={-1} yPos={1} label="Up Left" onMoveDown={moveDown} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={1} yPos={1} label="Up Right" onMoveDown={moveDown} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={-1} yPos={0} label="Left" onMoveRight={moveRight} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={-1} yPos={-1} label="Down Left" onMoveUp={moveUp} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={1} yPos={-1} label="Down Right" onMoveUp={moveUp} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel Reverser={true} xPos={1} yPos={0} label="Right" onMoveLeft={moveLeft} onSetPanelAndZoom={setPanelAndZoom} />
+          <Panel xPos={0} yPos={-1} label="Down" onMoveUp={moveUp} onSetPanelAndZoom={setPanelAndZoom} />
+        </div>
       </div>
     </div>
   );
-};
+}
 
-const HomeLayout = () => {
+function Panel({
+  xPos,
+  yPos,
+  label,
+  onMoveUp,
+  onMoveDown,
+  onMoveLeft,
+  onMoveRight,
+  onZoom,
+  onAnimationChange,
+  onSetPanelAndZoom,
+  ...props
+}) {
+  const handleAnimationChange = (anim) => {
+    if (onAnimationChange) {
+      onAnimationChange(anim);
+    }
+  };
+
+  const handleClick = (event) => {
+    event.stopPropagation();
+    if (onSetPanelAndZoom) {
+      if (props.Reverser) {
+        onSetPanelAndZoom(-xPos, yPos);
+
+      } else {
+
+        onSetPanelAndZoom(xPos, yPos);
+      }
+    }
+  };
+
   return (
-    <div className="site-wrap">
-      <PanelWrap />
+    <div className="panel" data-x-pos={xPos} data-y-pos={yPos} onClick={handleClick}>
+      {onMoveUp && (
+        <span className="panel__nav panel__nav--up" onClick={onMoveUp}>
+          up
+        </span>
+      )}
+      {onMoveRight && (
+        <span className="panel__nav panel__nav--right" onClick={onMoveRight}>
+          right
+        </span>
+      )}
+      {onMoveLeft && (
+        <span className="panel__nav panel__nav--left" onClick={onMoveLeft}>
+          left
+        </span>
+      )}
+      {onMoveDown && (
+        <span className="panel__nav panel__nav--down" onClick={onMoveDown}>
+          down
+        </span>
+      )}
+      {onZoom && (
+        <span className="panel__zoom" onClick={onZoom}>
+          View All
+        </span>
+      )}
+      <h1>{label}</h1>
+      {onAnimationChange && (
+        <div className="panel__animation-list">
+          <span
+            className="js-animation"
+            onClick={() => handleAnimationChange('animate--none')}
+          >
+            None
+          </span>
+          <span
+            className="js-animation"
+            onClick={() => handleAnimationChange('animate--shrink')}
+          >
+            Shrink
+          </span>
+          <span
+            className="js-animation"
+            onClick={() => handleAnimationChange('animate--tilt')}
+          >
+            Tilt
+          </span>
+          <span
+            className="js-animation"
+            onClick={() => handleAnimationChange('animate--tilt2')}
+          >
+            Tilt-2
+          </span>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default HomeLayout;
