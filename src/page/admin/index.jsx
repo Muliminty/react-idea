@@ -10,6 +10,7 @@ import DemoCard from './components/DemoCard'
 import TileLayout from './components/TileLayout'
 import HomeLayout from './components/homeLayout'
 
+import ButtonDemo from './components/ButtonDemo';
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
@@ -21,6 +22,11 @@ const menuData = [
     icon: <UserOutlined />,
     title: '主页项目卡片demo',
     content: <DemoCard />,
+  },
+  {
+    key: '2',
+    title: '按钮',
+    content: <ButtonDemo />,
   },
   {
     key: '2',

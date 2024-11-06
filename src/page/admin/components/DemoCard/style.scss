@@ -1,0 +1,10 @@
+.demo-card {
+    width: calc(100vw - 300px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.demo-card-item {
+    // width: calc(60% - 10px);
+}

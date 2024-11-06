@@ -3,7 +3,8 @@ import { Card, Modal } from 'antd';
 import AnimatedTreeMenu from '../DemoItem/AnimatedTreeMenu'
 import InteractiveSphere from '../DemoItem/InteractiveSphere'
 import Arborist from '../DemoItem/reactArborist'
-
+import ParticleTextCanvas from '../DemoItem/ParticleTextCanvas'
+import './style.scss'
 const demos = [
     {
         title: '树结构目录',
@@ -22,7 +23,14 @@ const demos = [
         key: 'Arborist',
         description: 'react-arborist 3k start 树组件',
         content: <Arborist />,
-    }
+    },
+    {
+        title: '粒子文字',
+        key: 'ParticleTextCanvas',
+        description: '粒子文字',
+        content: <ParticleTextCanvas />,
+    },
+
     // 你可以继续添加更多的卡片
 ];
 
