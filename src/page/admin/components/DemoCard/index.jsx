@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Modal } from 'antd';
 import AnimatedTreeMenu from '../DemoItem/AnimatedTreeMenu'
 import InteractiveSphere from '../DemoItem/InteractiveSphere'
+import Arborist from '../DemoItem/reactArborist'
 
 const demos = [
     {
@@ -15,6 +16,12 @@ const demos = [
         key: 'InteractiveSphere',
         description: 'WebGL实现星球效果',
         content: <InteractiveSphere />,
+    },
+    {
+        title: 'react-arborist',
+        key: 'Arborist',
+        description: 'react-arborist 3k start 树组件',
+        content: <Arborist />,
     }
     // 你可以继续添加更多的卡片
 ];

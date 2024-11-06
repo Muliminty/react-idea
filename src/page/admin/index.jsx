@@ -46,7 +46,7 @@ const menuData = [
 function Admin() {
   const [collapsed, setCollapsed] = useState(false);
   const [content, setContent] = useState(() => {
-    return <HomeLayout />
+    return <DemoCard />
   }); // 动态内容区域
 
   const toggle = () => {
