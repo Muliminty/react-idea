@@ -1,5 +1,5 @@
 import './style.scss'
-const Button01 = ({ text = 'link' }) => {
+const Button01 = ({ text = 'link33333333333333333333333333' }) => {
     return <p className='Button01'>
         <a href="#">
             {text}
