@@ -4,6 +4,7 @@ import AnimatedTreeMenu from '../DemoItem/AnimatedTreeMenu'
 import InteractiveSphere from '../DemoItem/InteractiveSphere'
 import Arborist from '../DemoItem/reactArborist'
 import ParticleTextCanvas from '../DemoItem/ParticleTextCanvas'
+import Directory from '../DemoItem/directory'
 import './style.scss'
 const demos = [
     {
@@ -30,7 +31,12 @@ const demos = [
         description: '粒子文字',
         content: <ParticleTextCanvas />,
     },
-
+    {
+        title: '目录',
+        key: 'Directory',
+        description: '目录',
+        content: <Directory />,
+    }
     // 你可以继续添加更多的卡片
 ];
 
