@@ -158,6 +158,7 @@ const Item = ({ index, style, posts, itemRefs }) => {
                 // 检查是否找到了指定的子元素
                 if (aaa) {
                     // 为指定的子元素添加动画类
+                    aaa.style.animationDuration = `${2}s`;
                     aaa.classList.add('animate__fadeInRight');
                     aaa.classList.add('animate__animated');
                 } else {
@@ -211,6 +212,7 @@ const Item = ({ index, style, posts, itemRefs }) => {
             style={style} // 必须传递 style 来正确渲染 react-window 列表项
             className="post"
             data-id={post.id} // 给每个列表项一个唯一的 id 用于 IntersectionObserver
+            data-wow-delay={`${index * 0.2}s`}  // 设置每个项的延迟时间
         >
             <div className="post-content">
                 <div id='aaa'>
