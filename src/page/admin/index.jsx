@@ -11,6 +11,7 @@ import TileLayout from './components/TileLayout'
 import HomeLayout from './components/homeLayout'
 
 import ButtonDemo from './components/ButtonDemo';
+import ComplexList from './components/Animate/ComplexList'
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
@@ -29,7 +30,7 @@ const menuData = [
     content: <ButtonDemo />,
   },
   {
-    key: '2',
+    key: '3',
     title: '布局',
     content: 'Media management content goes here',
     subMenu: [
@@ -46,6 +47,19 @@ const menuData = [
       },
     ],
   },
+  {
+    key: '4',
+    title: '动画',
+    content: 'Media management content goes here',
+    subMenu: [
+      {
+        key: '1231',
+        icon: '',
+        title: '复杂列表',
+        content: <ComplexList />,
+      },
+    ],
+  }
 
 ];
 
