@@ -4,6 +4,7 @@ import HomeLayout from '@/page/interactiveCase/components/homeLayout';
 import ButtonDemo from '@/page/interactiveCase/components/button';
 import ComplexList from '@/page/interactiveCase/components/animate/ComplexList';
 import Admin from '@/page/interactiveCase';
+import GridLayout from '@/page/interactiveCase/components/gridLayout';
 const interactive_case = [
     {
         title: '动画效果',
@@ -33,6 +34,11 @@ const interactive_case = [
                         title: '首页布局',
                         path: '/interactiveCase/Layout/HomeLayout',
                         component: HomeLayout,
+                    },
+                    {
+                        title: '网格布局',
+                        path: '/interactiveCase/Layout/GridLayout',
+                        component: GridLayout,
                     },
                 ]
             },

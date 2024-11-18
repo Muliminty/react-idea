@@ -1,0 +1,92 @@
+.grid-content {
+    background-color: salmon;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    /*  声明行间距和列间距  */
+    grid-gap: 20px;
+
+    /* 网格项之间的间隔 */
+    .grid-item {
+        display: grid;
+        /* 设置每个grid-item为grid布局 */
+        place-items: center;
+        /* 设置行高 */
+        background-color: pink;
+        padding: 10px;
+        /* 确保文本居中 */
+    }
+}
+
+.grid-content2 {
+    display: grid;
+    /* 行和列之间的间距 */
+    margin-top: 15px;
+    background-color: skyblue;
+    grid-gap: 10px;
+    /*  声明行的高度   前三行 每行100px */
+    grid-template-rows: repeat(3, 100px);
+
+    grid-template-areas:
+        "header header header"
+        "sidebar content content"
+        "footer footer footer";
+}
+
+.grid-content2>.header {
+    background-color: pink;
+    grid-area: header;
+    /* 对应 grid-template-areas 中的 header */
+}
+
+.grid-content2>.sidebar {
+    background-color: pink;
+    grid-area: sidebar;
+    /* 对应 grid-template-areas 中的 sidebar */
+}
+
+.grid-content2>.content {
+    background-color: pink;
+    grid-area: content;
+    /* 对应 grid-template-areas 中的 content */
+}
+
+.grid-content2>.footer {
+    background-color: pink;
+    grid-area: footer;
+    /* 对应 grid-template-areas 中的 footer */
+}
+
+
+.grid-content3 {
+    display: grid;
+    background-color: skyblue;
+    // 
+    grid-template-columns: repeat(12, 20px);
+    grid-template-rows: repeat(12, 20px);
+    grid-gap: 10px;
+    margin-top: 15px;
+
+    .grid-item {
+        background-color: pink;
+
+    }
+
+    .grid-item:nth-child(1) {
+        // 第一个子元素
+        grid-column: span 2;
+        /* 横跨 2 列 */
+        grid-row: span 2;
+        /* 横跨 2 行 */
+    }
+
+    .grid-item:nth-child(2) {
+        grid-column: span 3;
+        grid-row: span 3;
+    }
+
+    .grid-item:nth-child(6) {
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+}
