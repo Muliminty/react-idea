@@ -20,15 +20,21 @@ const interactive_case = [
                 component: DemoCard,
             },
             {
-                title: '磁贴界面布局',
-                path: '/interactiveCase/TileLayout',
-                component: TileLayout,
-            },
-            {
-                title: '首页布局特效',
-                path: '/interactiveCase/HomeLayout',
-                component: HomeLayout,
-            },
+                title: '布局',
+                path: '/interactiveCase/Layout',
+                children: [
+                    {
+                        title: '磁贴界面布局',
+                        path: '/interactiveCase/Layout/TileLayout',
+                        component: TileLayout,
+                    },
+                    {
+                        title: '首页布局',
+                        path: '/interactiveCase/Layout/HomeLayout',
+                        component: HomeLayout,
+                    },
+                ]
+            }
         ],
     },
 ];
