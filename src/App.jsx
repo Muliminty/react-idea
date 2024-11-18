@@ -1,21 +1,30 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import routes from '@/routes';
 
+const renderRoutes = (routes) => {
+  return routes.map((route, index) => {
+    const { path, component: Component, children } = route;
+    return (
+      <Route
+        key={index}
+        path={path}
+        element={<Component />}
+      >
+        {/* 如果有子路由，则递归渲染 */}
+        {children && renderRoutes(children)}
+      </Route>
+    );
+  });
+};
+
 const App = () => {
-  
   return (
     <Router>
       <Routes>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={<route.component />} // 使用 element 属性
-          />
-        ))}
+        {renderRoutes(routes)}
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
