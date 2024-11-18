@@ -69,6 +69,15 @@ function Admin() {
     <Layout className={style.layout}>
       {/* 左侧导航栏 */}
       <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Header className={style.header} style={{ padding: 0 }}>
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: style.trigger,
+              onClick: toggle,
+            }
+          )}
+        </Header>
         <div className="logo" />
         <Menu
           theme="dark"
@@ -81,15 +90,7 @@ function Admin() {
 
       <Layout>
         {/* 顶部导航栏 */}
-        <Header className={style.header} style={{ padding: 0 }}>
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: style.trigger,
-              onClick: toggle,
-            }
-          )}
-        </Header>
+
 
         {/* 主内容区域 */}
         <Content

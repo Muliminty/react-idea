@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 
 import style from './style.module.scss'
-import Animation from '@/components/Animation/index'
-import Loading from '@/components/Loading/index'
+import Animation from '@/components/animation'
+import Loading from '@/components/loading'
 import { useNavigate } from 'react-router-dom'
 
 import router from '@/routes'

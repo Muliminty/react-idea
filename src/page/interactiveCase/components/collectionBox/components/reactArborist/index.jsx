@@ -39,9 +39,9 @@ const Arborist = () => {
                 data={treeData}
                 rowHeight={50}
                 openByDefault={false}
-                // onActivate={(node) => {
-                //     setSelected('')
-                // }}
+            // onActivate={(node) => {
+            //     setSelected('')
+            // }}
             // children={(node, style, dragHandle) => <Node node={node} style={style} dragHandle={dragHandle} />}
             >
                 {({ node, style, dragHandle }) => <Node

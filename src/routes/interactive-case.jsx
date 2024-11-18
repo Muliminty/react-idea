@@ -1,8 +1,9 @@
-import DemoCard from '@/page/admin/components/DemoCard';
-import TileLayout from '@/page/admin/components/TileLayout';
-import HomeLayout from '@/page/admin/components/homeLayout';
-import ButtonDemo from '@/page/admin/components/ButtonDemo';
-import Admin from '@/page/admin';
+import CollectionBox from '@/page/interactiveCase/components/collectionBox';
+import TileLayout from '@/page/interactiveCase/components/tileLayout';
+import HomeLayout from '@/page/interactiveCase/components/homeLayout';
+import ButtonDemo from '@/page/interactiveCase/components/button';
+import ComplexList from '@/page/interactiveCase/components/animate/ComplexList';
+import Admin from '@/page/interactiveCase';
 const interactive_case = [
     {
         title: '动画效果',
@@ -10,14 +11,14 @@ const interactive_case = [
         component: Admin,
         children: [
             {
-                title: '按钮demo',
-                path: '/interactiveCase/ButtonDemo',
-                component: ButtonDemo, // 直接传递组件
+                title: '收集箱',
+                path: '/interactiveCase/collectionBox',
+                component: CollectionBox,
             },
             {
-                title: '博客组件预研',
-                path: '/interactiveCase/DemoCard',
-                component: DemoCard,
+                title: '按钮',
+                path: '/interactiveCase/ButtonDemo',
+                component: ButtonDemo, // 直接传递组件
             },
             {
                 title: '布局',
@@ -34,7 +35,12 @@ const interactive_case = [
                         component: HomeLayout,
                     },
                 ]
-            }
+            },
+            {
+                title: '复杂列表动画',
+                path: '/interactiveCase/ComplexList',
+                component: ComplexList,
+            },
         ],
     },
 ];
