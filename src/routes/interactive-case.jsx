@@ -2,7 +2,8 @@ import CollectionBox from '@/page/interactiveCase/components/collectionBox';
 import TileLayout from '@/page/interactiveCase/components/tileLayout';
 import HomeLayout from '@/page/interactiveCase/components/homeLayout';
 import ButtonDemo from '@/page/interactiveCase/components/button';
-import ComplexList from '@/page/interactiveCase/components/animate/ComplexList';
+import ComplexList from '@/page/interactiveCase/components/list/ComplexList';
+import DynamicHeightList from '@/page/interactiveCase/components/list/DynamicHeightList';
 import Admin from '@/page/interactiveCase';
 import GridLayout from '@/page/interactiveCase/components/gridLayout';
 import WhiteboardTool from '@/page/interactiveCase/components/whiteboardTool';
@@ -44,9 +45,20 @@ const interactive_case = [
                 ]
             },
             {
-                title: '复杂列表动画',
-                path: '/interactiveCase/ComplexList',
-                component: ComplexList,
+                title: '列表',
+                path: '/interactiveCase/List',
+                children: [
+                    {
+                        title: '复杂列表',
+                        path: '/interactiveCase/List/ComplexList',
+                        component: ComplexList,
+                    },
+                    {
+                        title: '动态高度列表',
+                        path: '/interactiveCase/List/DynamicHeightList',
+                        component: DynamicHeightList,
+                    },
+                ]
             },
             {
                 title: '白板',
