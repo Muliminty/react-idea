@@ -59,9 +59,11 @@ const Item = ({ index, style, posts, itemRefs }) => {
                 // 检查是否找到了指定的子元素
                 if (aaa) {
                     // 为指定的子元素添加动画类
-                    aaa.style.animationDuration = `${2}s`;
+                    aaa.style.animationDuration = `${1}s`;
                     aaa.classList.add('animate__fadeInRight');
                     aaa.classList.add('animate__animated');
+                    aaa.classList.add(`animation-delay${(index * 0.2 + 0.5).toFixed(1)}s`);
+
                 } else {
                     console.log('未找到指定的子元素');
                 }
@@ -71,8 +73,12 @@ const Item = ({ index, style, posts, itemRefs }) => {
                 // 检查是否找到了指定的子元素
                 if (bbb) {
                     // 为指定的子元素添加动画类
+                    bbb.style.animationDuration = `${1}s`;
                     bbb.classList.add('animate__fadeInLeft');
                     bbb.classList.add('animate__animated');
+                    bbb.classList.add(`animation-delay${(index * 0.2 + 0.5).toFixed(1)}s`);
+
+
                 } else {
                     console.log('未找到指定的子元素');
                 }
@@ -81,6 +87,12 @@ const Item = ({ index, style, posts, itemRefs }) => {
                 // 你还可以为父元素本身或者其他子元素添加动画类
                 targetElement.classList.add('animate__fadeInUp');
                 targetElement.classList.add('animate__animated');
+
+                targetElement.style.animationDuration = `${1}s`;
+                // animate__delay-${(index * 0.2 + 0.5).toFixed(1)}s
+                targetElement.classList.add(`animate__delay-${(index * 0.2 + 0.5).toFixed(1)}s`);
+
+
             }
         });
     };
