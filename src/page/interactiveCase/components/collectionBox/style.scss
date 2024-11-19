@@ -1,9 +1,12 @@
 .demo-card {
     width: calc(100vw - 300px);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    /* 每列的最小宽度为 200px，最大为 1fr */
+    gap: 10px;
 }
+
 
 .demo-card-item {
     // width: calc(60% - 10px);
