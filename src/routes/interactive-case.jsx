@@ -5,6 +5,7 @@ import ButtonDemo from '@/page/interactiveCase/components/button';
 import ComplexList from '@/page/interactiveCase/components/animate/ComplexList';
 import Admin from '@/page/interactiveCase';
 import GridLayout from '@/page/interactiveCase/components/gridLayout';
+import WhiteboardTool from '@/page/interactiveCase/components/whiteboardTool';
 const interactive_case = [
     {
         title: '动画效果',
@@ -47,6 +48,11 @@ const interactive_case = [
                 path: '/interactiveCase/ComplexList',
                 component: ComplexList,
             },
+            {
+                title: '白板',
+                path: '/interactiveCase/WhiteboardTool',
+                component: WhiteboardTool,
+            }
         ],
     },
 ];
