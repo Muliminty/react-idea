@@ -20,7 +20,7 @@ const DynamicHeightListDemo = ({ items }) => {
 
     // 获取每行的高度
     const getItemSize = useCallback((index) => {
-        return heightMap[index] || 50; // 默认高度为 50px
+        return heightMap[index] || 100; // 默认高度为 50px
     }, [heightMap]);
 
     // 渲染每一行
@@ -30,6 +30,7 @@ const DynamicHeightListDemo = ({ items }) => {
         useEffect(() => {
             if (rowRef.current) {
                 const newHeight = rowRef.current.getBoundingClientRect().height;
+                console.log('rowRef.current', rowRef.current);
                 if (newHeight !== heightMap[index]) {
                     updateHeight(index, newHeight); // 更新高度
                 }
@@ -37,10 +38,14 @@ const DynamicHeightListDemo = ({ items }) => {
         }, [index, heightMap, updateHeight]);
 
         return (
-            <div ref={rowRef} style={{ ...style, padding: '10px', boxSizing: 'border-box' }}>
+            <div ref={rowRef} style={{ ...style, padding: '10px', boxSizing: 'border-box', overflow: 'hidden', height: 'unset' }}>
                 <div style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '4px' }}>
                     <p>Item {index + 1}: {items[index]}</p>
                     <p style={{ fontSize: '12px' }}>Random height content: {Math.random().toFixed(2)}</p>
+                    {index === 3 && <p style={{ fontSize: '12px' }}>Random height content: {Math.random().toFixed(2)}</p>}
+                    {index === 3 && <p style={{ fontSize: '12px' }}>Random height content: {Math.random().toFixed(2)}</p>}
+                    {index === 3 && <p style={{ fontSize: '12px' }}>Random height content: {Math.random().toFixed(2)}</p>}
+                    {index === 3 && <p style={{ fontSize: '12px' }}>Random height content: {Math.random().toFixed(2)}</p>}
                 </div>
             </div>
         );
@@ -65,7 +70,7 @@ const DynamicHeightList = () => {
     const items = Array.from({ length: 100 }, (_, i) => `Content for item ${i + 1}`);
     return (
         <div style={{ padding: '20px' }}>
-            <h2>Dynamic Height Virtualized List</h2>
+            <h2>不定高度的虚拟列表</h2>
             <DynamicHeightListDemo items={items} />
         </div>
     );
