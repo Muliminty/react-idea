@@ -1,11 +1,105 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Excalidraw } from "@excalidraw/excalidraw";
 
+// obsidian 测试数据
+const data = {
+    "type": "excalidraw",
+    "version": 2,
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/1.8.26",
+    "elements": [
+        {
+            "id": "WpiPWhMca0j_L1s-6c0E-",
+            "type": "rectangle",
+            "x": -113.43850708007812,
+            "y": -216.71964263916016,
+            "width": 221.82763671875,
+            "height": 175.27122497558594,
+            "angle": 0,
+            "strokeColor": "#000000",
+            "backgroundColor": "transparent",
+            "fillStyle": "hachure",
+            "strokeWidth": 1,
+            "strokeStyle": "solid",
+            "roughness": 1,
+            "opacity": 100,
+            "groupIds": [],
+            "roundness": {
+                "type": 3
+            },
+            "seed": 5680960,
+            "version": 17,
+            "versionNonce": 121859904,
+            "isDeleted": false,
+            "boundElements": null,
+            "updated": 1732604835580,
+            "link": null,
+            "locked": false
+        },
+        {
+            "id": "hYzwWPg4XbTZN5ozX-8st",
+            "type": "ellipse",
+            "x": -57.753387451171875,
+            "y": 46.187171936035156,
+            "width": 101.32867431640625,
+            "height": 94.9385986328125,
+            "angle": 0,
+            "strokeColor": "#000000",
+            "backgroundColor": "transparent",
+            "fillStyle": "hachure",
+            "strokeWidth": 1,
+            "strokeStyle": "solid",
+            "roughness": 1,
+            "opacity": 100,
+            "groupIds": [],
+            "roundness": {
+                "type": 2
+            },
+            "seed": 60000064,
+            "version": 12,
+            "versionNonce": 1747686592,
+            "isDeleted": false,
+            "boundElements": null,
+            "updated": 1732604838846,
+            "link": null,
+            "locked": false
+        }
+    ],
+    "appState": {
+        "theme": "dark",
+        "viewBackgroundColor": "#ffffff",
+        "currentItemStrokeColor": "#000000",
+        "currentItemBackgroundColor": "transparent",
+        "currentItemFillStyle": "hachure",
+        "currentItemStrokeWidth": 1,
+        "currentItemStrokeStyle": "solid",
+        "currentItemRoughness": 1,
+        "currentItemOpacity": 100,
+        "currentItemFontFamily": 1,
+        "currentItemFontSize": 20,
+        "currentItemTextAlign": "left",
+        "currentItemStartArrowhead": null,
+        "currentItemEndArrowhead": "arrow",
+        "scrollX": 379.4262390136719,
+        "scrollY": 377.67181396484375,
+        "zoom": {
+            "value": 1
+        },
+        "currentItemRoundness": "round",
+        "gridSize": null,
+        "colorPalette": {},
+        "currentStrokeOptions": null,
+        "previousGridSize": null
+    },
+    "files": {}
+}
 const WhiteboardTool = () => {
-    const [firstBoardData, setFirstBoardData] = useState({
-        elements: [],
-        appState: { viewBackgroundColor: "#fff" },
-    });
+    const [firstBoardData, setFirstBoardData] = useState(
+        // {
+        //     elements: [],
+        //     appState: { viewBackgroundColor: "#fff" },
+        // }
+        data
+    );
 
     const [key, SetKey] = useState(0)
     const [secondBoardData, setSecondBoardData] = useState(firstBoardData);
