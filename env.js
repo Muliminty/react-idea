@@ -16,7 +16,7 @@
 const env = {
     development: {
         VITE_API_BASE_URL: 'https://dev.api.yourservice.com',
-        VITE_PORT: 3000,
+        VITE_PORT: 4000,
         OTHER_VARIABLE: 'value_for_dev',
         VITE_NAME: 'dev环境',
         VITE_APP_ENV: 'dev',

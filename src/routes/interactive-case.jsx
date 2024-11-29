@@ -9,7 +9,7 @@ import GridLayout from '@/page/interactiveCase/components/gridLayout';
 import WhiteboardTool from '@/page/interactiveCase/components/whiteboardTool';
 const interactive_case = [
     {
-        title: '动画效果',
+        title: '博客项目练手',
         path: '/interactiveCase',
         component: Admin,
         children: [
