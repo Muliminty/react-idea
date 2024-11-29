@@ -121,7 +121,7 @@ const UncontrolledExample = () => {
             >
                 添加组件
             </button>
-            <div>{JSON.stringify(state)}</div>
+            <div>{JSON.stringify({ count: state.count, info: state.info })}</div> {/* 只序列化 count 和 info */}
             <section className="grid-stack uncontrolled"></section>
         </div>
     );
