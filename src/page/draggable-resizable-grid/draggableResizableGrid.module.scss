@@ -1,0 +1,27 @@
+/* src/index.css 或其他全局样式文件 */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.grid-stack {
+    background-color: #fafafa;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.grid-stack-item-content {
+    background-color: salmon;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.grid-stack-item {
+    border: 1px solid #ddd;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+}

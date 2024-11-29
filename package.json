@@ -19,6 +19,7 @@
     "@excalidraw/excalidraw": "^0.17.6",
     "animate.css": "^4.1.1",
     "antd": "^5.21.5",
+    "gridstack": "^11.1.1",
     "react": "^18.3.1",
     "react-arborist": "^3.4.0",
     "react-dom": "^18.3.1",
