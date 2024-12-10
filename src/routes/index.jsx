@@ -1,6 +1,7 @@
 import Home from '@/page/home';
 import About from '@/page/about';
 import interactive_case from './interactive-case';
+import nested_route from './nested-route';
 import DraggableResizableGrid from '@/page/draggable-resizable-grid';
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
     component: DraggableResizableGrid,
   },
   ...interactive_case,
+  ...nested_route,
 ];
 
 export default routes;
