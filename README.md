@@ -1,4 +1,4 @@
-# raect-admin
+# raect-idea
 
 实现中后台常见功能的demo
 
