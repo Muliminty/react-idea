@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import idea_route from '@/routes/idea-route';
 import styles from './style.module.scss';
@@ -22,7 +22,7 @@ const Idea = () => {
     // 根据当前路由路径，判断是否匹配到父路由或子路由
     const getDefaultSelectedKey = () => {
         const matchedRoute = routes.find(route => currentPath.startsWith(route.path));  // 通过startsWith来匹配父路由或子路由
-        
+
         if (matchedRoute) {
             return matchedRoute.path;  // 如果匹配到子路由，返回子路由路径
         }
