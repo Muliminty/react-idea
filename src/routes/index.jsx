@@ -9,11 +9,11 @@ const routes = [
     path: '/',
     component: Home,
   },
-  {
-    title: '关于',
-    path: '/about',
-    component: About,
-  },
+  // {
+  //   title: '关于',
+  //   path: '/about',
+  //   component: About,
+  // },
   {
     title: '可拖拽可缩放看板',
     path: '/draggableResizableGrid',

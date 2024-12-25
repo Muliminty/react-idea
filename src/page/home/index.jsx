@@ -14,7 +14,7 @@ function Home() {
   const [skillList, setSkillList] = useState([]);
 
   const skillListApproach = async () => {
-    const arr = ['Vite', 'React', 'Antd', 'Redux', 'React-Router', 'Sass CSS Modules', 'Ant Design Charts'];
+    const arr = ['Vite', 'React', 'Antd', 'Redux', 'React-Router', 'Sass CSS Modules', 'Ant Design Charts','...'];
     const tempList = [];
 
     for (let i = 0; i < arr.length; i++) {
@@ -34,7 +34,7 @@ function Home() {
     <div ref={AnimationRef}>
       <div className={style.Home}>
         <Loading />
-        <h1>Muliminty Admin</h1>
+        <h1>Muliminty Idea</h1>
         <ul>
           <p>技术栈</p>
           {skillList.map((e) => (
@@ -43,7 +43,7 @@ function Home() {
             </Animation>
           ))}
         </ul>
-        <p>中后台项目常见功能demo项目</p>
+        <p>常见功能demo练习项目</p>
         <ButtonBox />
       </div>
     </div>
