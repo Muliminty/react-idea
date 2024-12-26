@@ -4,8 +4,7 @@ import {
 } from '@ant-design/icons';
 
 import Idea from '@/page/idea'
-import About from '@/page/nested-route/about.jsx'
-import Setting from '@/page/nested-route/setting.jsx'
+import CardContent from '@/page/idea/card'
 
 const idea_route = [
     {
@@ -14,17 +13,12 @@ const idea_route = [
         component: Idea,
         children: [
             {
-                title: 'about',
-                path: '/idea/about',
+                title: 'card',
+                path: '/idea/card',
                 icon: <UserOutlined />,
-                component: About,
+                component: CardContent,
             },
-            {
-                title: 'setting',
-                path: '/idea/setting',
-                icon: <VideoCameraOutlined />,
-                component: Setting, // 直接传递组件
-            },
+
         ]
     }
 ]
