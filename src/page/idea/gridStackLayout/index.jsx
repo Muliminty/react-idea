@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GridStack } from "gridstack";
 import "gridstack/dist/gridstack.min.css";
-import './style.scss';
+import "gridstack/dist/gridstack-extra.min.css";
+import './demo.css'// 原官网demo样式
 
 const GridStackLayout = ({ items }) => {
 
