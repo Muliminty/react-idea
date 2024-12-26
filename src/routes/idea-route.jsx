@@ -5,6 +5,7 @@ import {
 
 import Idea from '@/page/idea'
 import CardContent from '@/page/idea/card'
+import GridStackLayout from '@/page/idea/gridStackLayout'
 
 const idea_route = [
     {
@@ -18,7 +19,12 @@ const idea_route = [
                 icon: <UserOutlined />,
                 component: CardContent,
             },
-
+            {
+                title: 'gridstack布局',
+                path: '/idea/gridstack',
+                icon: <VideoCameraOutlined />,
+                component: GridStackLayout,
+            }
         ]
     }
 ]
