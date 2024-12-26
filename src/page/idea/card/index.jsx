@@ -23,10 +23,6 @@ const CardContent = () => {
         <>
             <h2>创意小卡片</h2>
             <div className={styles['card-content']}>
-                <div style={{ width: '300px', height: '300px' }}>
-                    <DayNight />
-                </div>
-
                 <ControlledStack
                     items={items}
                     addItem={() => setItems([...items, { id: `item-${items.length + 1}`, width: 2, height: 2, maxWidth: 3, minWidth: 2, maxHeight: 3, minHeight: 2 }])}
