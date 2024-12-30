@@ -4,8 +4,10 @@ import {
 } from '@ant-design/icons';
 
 import Idea from '@/page/idea'
+import Empty from '@/layout/empty'
 import CardContent from '@/page/idea/card'
 import GridStackLayout from '@/page/idea/gridStackLayout'
+import MenuIcon from '@/page/idea/menu-icon'
 
 const idea_route = [
     {
@@ -24,6 +26,34 @@ const idea_route = [
                 path: '/idea/gridstack',
                 icon: <VideoCameraOutlined />,
                 component: GridStackLayout,
+            },
+            {
+                title: '按钮',
+                path: '/idea/button',
+                icon: '',
+                component: Empty,
+                children: [
+                    {
+                        title: 'Test',
+                        path: '/idea/button/icon',
+                        icon: '11',
+                        component: MenuIcon,
+                    },
+                    {
+                        title: '子节点',
+                        path: '/idea/button/test',
+                        icon: '',
+                        component: Empty,
+                        children: [
+                            {
+                                title: '子节点',
+                                path: '/idea/button/test/GridStackLayout',
+                                icon: '',
+                                component: GridStackLayout,
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

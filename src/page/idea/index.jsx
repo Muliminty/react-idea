@@ -29,16 +29,29 @@ const Idea = () => {
         return idea_route[0].path;  // 默认选中父路由路径
     };
 
-    // 动态生成子菜单项
-    const menuItems = routes.map((item) => ({
-        key: item.path,
-        icon: item.icon,
-        label: item.title,
-    }));
+    // 递归生成菜单项
+    const renderMenuItems = (routes) => {
+        return routes.map((item) => {
+            // 如果有子路由，递归生成子菜单
+            if (item.children && item.children.length > 0) {
+                return {
+                    key: item.path,
+                    icon: item.icon,
+                    label: item.title,
+                    children: renderMenuItems(item.children),  // 递归处理子菜单
+                };
+            }
+            return {
+                key: item.path,
+                icon: item.icon,
+                label: item.title,
+            };
+        });
+    };
 
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
+    const menuItems = renderMenuItems(routes);
+
+    const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
 
     return (
         <Layout className={styles['Layout']}>
@@ -49,7 +62,10 @@ const Idea = () => {
                     mode="inline"
                     defaultSelectedKeys={[getDefaultSelectedKey()]}  // 动态获取默认选中的路径
                     selectedKeys={[currentPath]}  // 根据当前路径选中菜单
-                    onClick={(e) => navigate(e.key)}  // 点击菜单项跳转
+                    onClick={(e) => {
+                        console.log(e)
+                        navigate(e.key)
+                    }}  // 点击菜单项跳转
                     items={menuItems}
                 />
             </Sider>
