@@ -1,6 +1,8 @@
 import {
     UserOutlined,
     VideoCameraOutlined,
+    ScissorOutlined,
+    BoldOutlined
 } from '@ant-design/icons';
 
 import Idea from '@/page/idea'
@@ -16,7 +18,7 @@ const idea_route = [
         component: Idea,
         children: [
             {
-                title: 'card',
+                title: '卡片',
                 path: '/idea/card',
                 icon: <UserOutlined />,
                 component: CardContent,
@@ -30,29 +32,29 @@ const idea_route = [
             {
                 title: '按钮',
                 path: '/idea/button',
-                icon: '',
+                icon: <BoldOutlined />,
                 component: Empty,
                 children: [
                     {
-                        title: 'Test',
+                        title: 'icon',
                         path: '/idea/button/icon',
-                        icon: '11',
+                        icon: <ScissorOutlined />,
                         component: MenuIcon,
                     },
-                    {
-                        title: '子节点',
-                        path: '/idea/button/test',
-                        icon: '',
-                        component: Empty,
-                        children: [
-                            {
-                                title: '子节点',
-                                path: '/idea/button/test/GridStackLayout',
-                                icon: '',
-                                component: GridStackLayout,
-                            }
-                        ]
-                    }
+                    // {
+                    //     title: '子节点',
+                    //     path: '/idea/button/test',
+                    //     icon: '',
+                    //     component: Empty,
+                    //     children: [
+                    //         {
+                    //             title: '子节点',
+                    //             path: '/idea/button/test/GridStackLayout',
+                    //             icon: '',
+                    //             component: GridStackLayout,
+                    //         }
+                    //     ]
+                    // }
                 ]
             }
         ]

@@ -56,7 +56,14 @@ const Idea = () => {
     return (
         <Layout className={styles['Layout']}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div>logo</div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: '24px',
+                    background: 'linear-gradient(45deg, #4f9fcf, #a5c5d7, #78a1b1)', /* 天空蓝到灰蓝色 */
+                    borderRadius: borderRadiusLG,
+                }}>这里是一个logo</div>
                 <Menu
                     theme="dark"
                     mode="inline"
