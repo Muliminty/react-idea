@@ -73,6 +73,20 @@ const idea_route = [
                     //     ]
                     // }
                 ]
+            },
+            {
+                title: '列表',
+                path: '/idea/list',
+                icon: <ScissorOutlined />,
+                component: Empty,
+                children: [
+                    {
+                        title: '虚拟列表',
+                        path: '/idea/list/virtualList',
+                        icon: '',
+                        component: Empty,
+                    }
+                ]
             }
         ]
     }
