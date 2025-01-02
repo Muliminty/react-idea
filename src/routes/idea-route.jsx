@@ -9,7 +9,18 @@ import Idea from '@/page/idea'
 import Empty from '@/layout/empty'
 import CardContent from '@/page/idea/card'
 import GridStackLayout from '@/page/idea/gridStackLayout'
-import MenuIcon from '@/page/idea/menu-icon'
+import MenuIcon from '@/page/idea/button/menu-icon'
+import LinkButton from '@/page/idea/button/link'
+
+// import CollectionBox from '@/page/interactiveCase/components/collectionBox';
+// import TileLayout from '@/page/interactiveCase/components/tileLayout';
+// import HomeLayout from '@/page/interactiveCase/components/homeLayout';
+// import ButtonDemo from '@/page/interactiveCase/components/button';
+// import ComplexList from '@/page/interactiveCase/components/list/ComplexList';
+// import DynamicHeightList from '@/page/interactiveCase/components/list/DynamicHeightList';
+// import Admin from '@/page/interactiveCase';
+// import GridLayout from '@/page/interactiveCase/components/gridLayout';
+// import WhiteboardTool from '@/page/interactiveCase/components/whiteboardTool';
 
 const idea_route = [
     {
@@ -41,6 +52,12 @@ const idea_route = [
                         icon: <ScissorOutlined />,
                         component: MenuIcon,
                     },
+                    {
+                        title: 'link',
+                        path: '/idea/button/link',
+                        icon: <ScissorOutlined />,
+                        component: LinkButton,
+                    }
                     // {
                     //     title: '子节点',
                     //     path: '/idea/button/test',

@@ -19,7 +19,7 @@ const routes = [
     path: '/draggableResizableGrid',
     component: DraggableResizableGrid,
   },
-  ...interactive_case,
+  // ...interactive_case,
   ...nested_route,
   ...idea_route,
 ];
