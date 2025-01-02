@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import MonacoEditorPlugin from 'vite-plugin-monaco-editor';
+
 import { resolve } from 'path'
 import envConfig from './env';
 // import autoImportStyles from './plugin/vite-plugin-auto-import-styles';
@@ -15,10 +15,6 @@ export default defineConfig(({ mode }) => {
       react(),
       // autoImportStyles(),
       // viteCustomStartupInfo()
-      MonacoEditorPlugin({
-        languages: ['javascript', 'typescript', 'html', 'css'],
-        theme: 'vs-dark',
-      }),
     ],
     server: {
       host: '0.0.0.0',

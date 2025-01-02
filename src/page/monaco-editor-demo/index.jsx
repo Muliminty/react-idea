@@ -232,3 +232,13 @@ greet();
 };
 
 export default MonacoEditorComponent;
+
+// const MonacoEditorComponent = () => {
+//     return (
+//         <div>
+//             <h1>Monaco Editor Component</h1>
+//             {/* 在这里添加你的 Monaco Editor 组件 */}
+//         </div>
+//     );
+// };
+// export default MonacoEditorComponent;

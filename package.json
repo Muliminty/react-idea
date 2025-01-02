@@ -33,6 +33,7 @@
     "react-wow": "^1.0.0",
     "sass": "^1.81.0",
     "three": "^0.169.0",
+    "vite-plugin-monaco-editor": "^1.1.0",
     "wow.js": "^1.2.2"
   },
   "devDependencies": {
