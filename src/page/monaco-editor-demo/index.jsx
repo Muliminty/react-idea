@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Layout, Button, Select, Row, Col, Input } from 'antd';
+import * as monaco from 'monaco-editor';
 import MonacoEditor from 'react-monaco-editor';
 
 const { Header, Content } = Layout;
@@ -21,30 +22,31 @@ greet();
     const [dragging, setDragging] = useState(false); // 是否正在拖拽
 
     const draggerRef = useRef(null);
+    const editorModelRef = useRef(null); // 存储编辑器模型
 
     // 编辑器的配置
     const editorOptions = {
         selectOnLineNumbers: true,
         minimap: {
-            enabled: false,  // 启用迷你地图
+            enabled: false,
         },
         scrollBeyondLastLine: false,
         wordWrap: 'on',
         wrappingIndent: 'same',
         autoIndent: 'full',
-        renderLineHighlight: 'all',  // 高亮当前行
-        lineNumbers: 'on',  // 显示行号
-        lineNumbersMinChars: 3, // 行号最小长度
-        folding: true,  // 启用代码折叠
-        foldingStrategy: 'auto',  // 自动折叠
-        quickSuggestions: true,  // 启用快速建议
-        parameterHints: true,  // 参数提示
-        autoClosingBrackets: true,  // 自动闭合括号
-        autoClosingQuotes: true,  // 自动闭合引号
-        formatOnType: true,  // 输入时格式化代码
-        colorDecorators: true,  // 启用语法高亮
-        glyphMargin: true,  // 代码行的附加信息（如断点图标）
-        errorSquiggles: 'on', // 显示语法错误标记
+        renderLineHighlight: 'all',
+        lineNumbers: 'on',
+        lineNumbersMinChars: 3,
+        folding: true,
+        foldingStrategy: 'auto',
+        quickSuggestions: true,
+        parameterHints: true,
+        autoClosingBrackets: true,
+        autoClosingQuotes: true,
+        formatOnType: true,
+        colorDecorators: true,
+        glyphMargin: true,
+        errorSquiggles: 'on',
     };
 
     // 监听编辑器内容变化
@@ -53,8 +55,8 @@ greet();
     };
 
     // 改变语言和主题
-    const handleLanguageChange = (value) => setLanguage(value);
-    const handleThemeChange = (value) => setTheme(value);
+    const handleLanguageChange = useCallback((value) => setLanguage(value), []);
+    const handleThemeChange = useCallback((value) => setTheme(value), []);
 
     // 动态加载语言支持
     useEffect(() => {
@@ -92,10 +94,45 @@ greet();
 
             // 恢复原始的 console.log
             console.log = originalConsoleLog;
+
+            // 清除错误标记
+            if (editorModelRef.current) {
+                monaco.editor.setModelMarkers(editorModelRef.current, 'owner', []);
+            }
         } catch (error) {
             setConsoleOutput((prevOutput) => prevOutput + 'Error: ' + error.message + '\n');
+            // 在编辑器中显示错误标记
+            if (editorModelRef.current) {
+                monaco.editor.setModelMarkers(editorModelRef.current, 'owner', [{
+                    severity: monaco.MarkerSeverity.Error,
+                    message: error.message,
+                    startLineNumber: 1,
+                    startColumn: 1,
+                    endLineNumber: 1,
+                    endColumn: 1,
+                }]);
+            }
         }
     };
+
+    // 格式化代码
+    const handleFormatCode = () => {
+        if (editorModelRef.current) {
+            monaco.editor.getModels()[0].format();
+        }
+    };
+
+    // 自动保存功能
+    useEffect(() => {
+        const savedCode = localStorage.getItem('monaco-editor-code');
+        if (savedCode) {
+            setEditorContent(savedCode);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('monaco-editor-code', editorContent);
+    }, [editorContent]);
 
     // 处理拖拽过程
     const handleMouseDown = (e) => {
@@ -141,6 +178,12 @@ greet();
                         >
                             Run Code
                         </Button>
+                        <Button
+                            onClick={handleFormatCode}
+                            style={{ marginRight: '10px' }}
+                        >
+                            Format Code
+                        </Button>
                     </Col>
                     <Col>
                         <Select
@@ -184,6 +227,9 @@ greet();
                                 value={editorContent}  // 绑定外部状态
                                 options={editorOptions}  // 配置编辑器功能
                                 onChange={onChange}  // 编辑器内容变化时更新外部状态
+                                editorDidMount={(editor) => {
+                                    editorModelRef.current = editor.getModel(); // 获取编辑器模型
+                                }}
                             />
                         </div>
 
@@ -212,6 +258,7 @@ greet();
                         >
                             <h3>Console Output:</h3>
                             <Input.TextArea
+                                id="console-output"
                                 value={consoleOutput}
                                 rows={16}
                                 readOnly
@@ -219,8 +266,7 @@ greet();
                                     backgroundColor: '#1e1e1e',
                                     color: '#fff',
                                     borderRadius: '4px',
-                                    fontFamily: 'monospace',
-                                    padding: '10px',
+                                    border: 'none',
                                 }}
                             />
                         </div>
@@ -232,13 +278,3 @@ greet();
 };
 
 export default MonacoEditorComponent;
-
-// const MonacoEditorComponent = () => {
-//     return (
-//         <div>
-//             <h1>Monaco Editor Component</h1>
-//             {/* 在这里添加你的 Monaco Editor 组件 */}
-//         </div>
-//     );
-// };
-// export default MonacoEditorComponent;
