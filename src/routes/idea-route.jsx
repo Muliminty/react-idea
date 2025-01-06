@@ -7,6 +7,8 @@ import {
 
 import Idea from '@/page/idea'
 import Empty from '@/layout/empty'
+import UnderDevelopment from '@/layout/underDevelopment'
+
 import CardContent from '@/page/idea/card'
 import GridStackLayout from '@/page/idea/gridStackLayout'
 import MenuIcon from '@/page/idea/button/menu-icon'
@@ -84,7 +86,21 @@ const idea_route = [
                         title: '虚拟列表',
                         path: '/idea/list/virtualList',
                         icon: '',
-                        component: Empty,
+                        component: UnderDevelopment,
+                    }
+                ]
+            },
+            {
+                title: 'dndkit(拖拽）',
+                path: '/idea/dndkit',
+                icon: <ScissorOutlined />,
+                component: Empty,
+                children: [
+                    {
+                        title: '拖拽实现',
+                        path: '/idea/dndkit/demo01',
+                        icon: '',
+                        component: UnderDevelopment,
                     }
                 ]
             }
