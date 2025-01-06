@@ -13,7 +13,7 @@ import CardContent from '@/page/idea/card'
 import GridStackLayout from '@/page/idea/gridStackLayout'
 import MenuIcon from '@/page/idea/button/menu-icon'
 import LinkButton from '@/page/idea/button/link'
-
+import DragAndDropGrid from '@/page/idea/dragAndDropGrid'
 // import CollectionBox from '@/page/interactiveCase/components/collectionBox';
 // import TileLayout from '@/page/interactiveCase/components/tileLayout';
 // import HomeLayout from '@/page/interactiveCase/components/homeLayout';
@@ -97,10 +97,10 @@ const idea_route = [
                 component: Empty,
                 children: [
                     {
-                        title: '拖拽实现',
-                        path: '/idea/dndkit/demo01',
+                        title: '拖拽栅格',
+                        path: '/idea/dndkit/dragAndDropGrid',
                         icon: '',
-                        component: UnderDevelopment,
+                        component: DragAndDropGrid,
                     }
                 ]
             }
