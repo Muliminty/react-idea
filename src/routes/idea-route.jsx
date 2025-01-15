@@ -14,6 +14,8 @@ import GridStackLayout from '@/page/idea/gridStackLayout'
 import MenuIcon from '@/page/idea/button/menu-icon'
 import LinkButton from '@/page/idea/button/link'
 import DragAndDropGrid from '@/page/idea/dragAndDropGrid'
+
+import Markdown01 from '@/page/idea/markdown/markdown01'
 // import CollectionBox from '@/page/interactiveCase/components/collectionBox';
 // import TileLayout from '@/page/interactiveCase/components/tileLayout';
 // import HomeLayout from '@/page/interactiveCase/components/homeLayout';
@@ -60,20 +62,6 @@ const idea_route = [
                         icon: <ScissorOutlined />,
                         component: LinkButton,
                     }
-                    // {
-                    //     title: '子节点',
-                    //     path: '/idea/button/test',
-                    //     icon: '',
-                    //     component: Empty,
-                    //     children: [
-                    //         {
-                    //             title: '子节点',
-                    //             path: '/idea/button/test/GridStackLayout',
-                    //             icon: '',
-                    //             component: GridStackLayout,
-                    //         }
-                    //     ]
-                    // }
                 ]
             },
             {
@@ -103,7 +91,21 @@ const idea_route = [
                         component: DragAndDropGrid,
                     }
                 ]
-            }
+            },
+            {
+                title: 'markdown',
+                path: '/idea/markdown',
+                icon: <ScissorOutlined />,
+                component: Empty,
+                children: [
+                    {
+                        title:'markdown01',
+                        path: '/idea/markdown/markdown01',
+                        icon: '',
+                        component: Markdown01,
+                    }
+                ]
+            },
         ]
     }
 ]
