@@ -16,6 +16,8 @@ import LinkButton from '@/page/idea/button/link'
 import DragAndDropGrid from '@/page/idea/dragAndDropGrid'
 
 import Markdown01 from '@/page/idea/markdown/markdown01'
+
+import PuckEditor from '@/page/idea/Puck'
 // import CollectionBox from '@/page/interactiveCase/components/collectionBox';
 // import TileLayout from '@/page/interactiveCase/components/tileLayout';
 // import HomeLayout from '@/page/interactiveCase/components/homeLayout';
@@ -79,16 +81,22 @@ const idea_route = [
                 ]
             },
             {
-                title: 'dndkit(拖拽）',
-                path: '/idea/dndkit',
+                title: '拖拽库',
+                path: '/idea/drag',
                 icon: <ScissorOutlined />,
                 component: Empty,
                 children: [
                     {
                         title: '拖拽栅格',
-                        path: '/idea/dndkit/dragAndDropGrid',
+                        path: '/idea/drag/dragAndDropGrid',
                         icon: '',
                         component: DragAndDropGrid,
+                    },
+                    {
+                        title: 'PuckEditor',
+                        path: '/idea/drag/puckEditor',
+                        icon: '',
+                        component: PuckEditor
                     }
                 ]
             },
@@ -99,7 +107,7 @@ const idea_route = [
                 component: Empty,
                 children: [
                     {
-                        title:'markdown01',
+                        title: 'markdown01',
                         path: '/idea/markdown/markdown01',
                         icon: '',
                         component: Markdown01,
