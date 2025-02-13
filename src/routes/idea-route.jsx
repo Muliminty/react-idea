@@ -18,6 +18,8 @@ import DragAndDropGrid from '@/page/idea/dragAndDropGrid'
 import Markdown01 from '@/page/idea/markdown/markdown01'
 
 import PuckEditor from '@/page/idea/Puck'
+
+import SplashCursor from '@/page/idea/webgl/SplashCursor'
 // import CollectionBox from '@/page/interactiveCase/components/collectionBox';
 // import TileLayout from '@/page/interactiveCase/components/tileLayout';
 // import HomeLayout from '@/page/interactiveCase/components/homeLayout';
@@ -114,6 +116,21 @@ const idea_route = [
                     }
                 ]
             },
+            {
+                title: 'webgl',
+                path: '/idea/webgl',
+                icon: <ScissorOutlined />,
+                component: Empty,
+                children: [
+                    {
+                        title: '鼠标跟随',
+                        path: '/idea/webgl/SplashCursor',
+                        icon: '',
+                        component: SplashCursor,
+                    }
+                ]
+            },
+            
         ]
     }
 ]
