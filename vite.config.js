@@ -11,6 +11,10 @@ export default defineConfig(({ mode }) => {
   const env = envConfig[mode];
 
   return {
+    // 如果部署在 https://<USERNAME or GROUP>.gitlab.io/ 上，可以省略base或设置为'/'   /react-idea/
+    // 如果部署在 https://<USERNAME or GROUP>.gitlab.io/<REPO>/ 上，需要设置base为'/<REPO>/'
+    base: '/react-idea/', // 请将<REPO>替换为你的仓库名称
+    
     plugins: [
       react(),
       // autoImportStyles(),
