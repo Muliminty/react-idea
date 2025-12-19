@@ -38,6 +38,19 @@ jobs:
           NODE_ENV: production
           GITHUB_REPOSITORY: ${{ github.repository }}
 
+      - name: Fix 404.html for SPA routing
+        run: |
+          # 复制 index.html 为 404.html（GitHub Pages 需要）
+          cp dist/index.html dist/404.html
+          # 修复 404.html 中的资源路径（使用相对路径）
+          if [ -f dist/404.html ]; then
+            # 替换绝对路径为相对路径
+            sed -i.bak 's|href="/react-idea/|href="./|g' dist/404.html
+            sed -i.bak 's|src="/react-idea/|src="./|g' dist/404.html
+            # 清理备份文件
+            rm -f dist/404.html.bak
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

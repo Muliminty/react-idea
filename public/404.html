@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React 特效灵感</title>
+    <script>
+      // GitHub Pages SPA 路由回退处理
+      // 单页应用需要将所有路由重定向到 index.html
+      const path = window.location.pathname;
+      const base = '/react-idea';
+      
+      // 如果路径不是以 base 开头，重定向
+      if (!path.startsWith(base)) {
+        window.location.replace(base + path);
+      } else {
+        // 否则加载 index.html
+        window.location.replace(base + '/index.html');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">正在加载...</div>
+  </body>
+</html>

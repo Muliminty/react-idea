@@ -12,12 +12,28 @@ const getBasePath = () => {
   return '/'
 }
 
+const base = process.env.NODE_ENV === 'production' ? getBasePath() : '/'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? getBasePath() : '/',
+  base: base,
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        // 确保资源文件名包含 hash，避免缓存问题
+        assetFileNames: 'assets/[name].[hash].[ext]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
+      },
+    },
   },
+  // 开发服务器配置
+  server: {
+    port: 5173,
+  },
+  // 确保所有资源路径都使用 base
+  publicDir: 'public',
 })
