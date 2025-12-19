@@ -1,0 +1,35 @@
+.glowing-card {
+  position: relative;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  background-size: 200% 200%;
+  border-radius: 12px;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.glowing-card-content {
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 2rem;
+  height: 100%;
+}
+
+.glowing-card-content h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.glowing-card-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+

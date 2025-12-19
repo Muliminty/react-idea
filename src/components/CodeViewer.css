@@ -1,0 +1,85 @@
+.code-viewer {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.code-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.code-viewer-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.copy-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-button:hover {
+  background: var(--accent-hover);
+}
+
+.copy-button.copied {
+  background: var(--success);
+}
+
+.code-block {
+  margin: 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.code-block code {
+  color: inherit;
+  font-family: inherit;
+}
+
+/* 代码高亮样式 */
+.language-tsx .keyword {
+  color: #569cd6;
+}
+
+.language-tsx .string {
+  color: #ce9178;
+}
+
+.language-tsx .function {
+  color: #dcdcaa;
+}
+
+.language-tsx .comment {
+  color: #6a9955;
+}
+
+.language-css .property {
+  color: #9cdcfe;
+}
+
+.language-css .value {
+  color: #ce9178;
+}
+
+.language-css .selector {
+  color: #d7ba7d;
+}
+
