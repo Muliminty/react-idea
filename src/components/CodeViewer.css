@@ -1,8 +1,9 @@
 .code-viewer {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 3px solid var(--accent);
+  border-radius: 0;
   overflow: hidden;
+  box-shadow: 6px 6px 0 var(--shadow);
 }
 
 .code-viewer-header {
@@ -11,42 +12,71 @@
   align-items: center;
   padding: 1rem 1.5rem;
   background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--accent);
 }
 
 .code-viewer-title {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .copy-button {
-  background: var(--accent);
-  color: white;
-  border: none;
+  background: var(--bg-primary);
+  color: var(--accent);
+  border: 2px solid var(--accent);
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0 var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.copy-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .copy-button:hover {
-  background: var(--accent-hover);
+  color: var(--bg-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.copy-button:hover::before {
+  left: 0;
 }
 
 .copy-button.copied {
-  background: var(--success);
+  background: var(--accent);
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--shadow-dark);
 }
 
 .code-block {
   margin: 0;
   padding: 1.5rem;
   overflow-x: auto;
-  background: #1e1e1e;
-  color: #d4d4d4;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   font-family: 'Fira Code', 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.6;
+  border: 2px solid var(--border);
 }
 
 .code-block code {
@@ -55,31 +85,34 @@
 }
 
 /* 代码高亮样式 */
-.language-tsx .keyword {
-  color: #569cd6;
+.language-jsx .keyword {
+  color: #000000;
+  font-weight: 700;
 }
 
-.language-tsx .string {
-  color: #ce9178;
+.language-jsx .string {
+  color: #333333;
 }
 
-.language-tsx .function {
-  color: #dcdcaa;
+.language-jsx .function {
+  color: #1a1a1a;
+  font-weight: 600;
 }
 
-.language-tsx .comment {
-  color: #6a9955;
+.language-jsx .comment {
+  color: #666666;
 }
 
 .language-css .property {
-  color: #9cdcfe;
+  color: #1a1a1a;
+  font-weight: 600;
 }
 
 .language-css .value {
-  color: #ce9178;
+  color: #333333;
 }
 
 .language-css .selector {
-  color: #d7ba7d;
+  color: #000000;
+  font-weight: 700;
 }
-

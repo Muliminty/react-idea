@@ -1,11 +1,12 @@
 .filter-panel {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 3px solid var(--accent);
+  border-radius: 0;
   padding: 1.5rem;
   height: fit-content;
   position: sticky;
-  top: 2rem;
+  top: 5rem;
+  box-shadow: 6px 6px 0 var(--shadow);
 }
 
 .filter-header {
@@ -14,28 +15,34 @@
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent);
 }
 
 .filter-header h3 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .clear-all-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  color: var(--accent);
   padding: 0.375rem 0.75rem;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0 var(--shadow);
 }
 
 .clear-all-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--shadow);
 }
 
 .filter-section {
@@ -48,10 +55,10 @@
 
 .filter-section h4 {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   margin-bottom: 1rem;
 }
 
@@ -67,7 +74,7 @@
   gap: 0.75rem;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 6px;
+  border-radius: 0;
   transition: background 0.2s;
 }
 
@@ -85,6 +92,7 @@
 .filter-option span {
   color: var(--text-primary);
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .filter-tags {
@@ -95,24 +103,28 @@
 
 .filter-tag {
   background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
+  border: 2px solid var(--accent);
+  color: var(--accent);
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0 var(--shadow);
 }
 
 .filter-tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--shadow);
 }
 
 .filter-tag.active {
   background: var(--accent);
-  border-color: var(--accent);
-  color: white;
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--shadow-dark);
 }
 
 @media (max-width: 1024px) {
@@ -120,4 +132,3 @@
     position: static;
   }
 }
-
