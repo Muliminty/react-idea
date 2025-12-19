@@ -13,7 +13,7 @@ function Navbar() {
         <div className="navbar-links">
           <Link to="/home" className="nav-link">首页</Link>
           <a 
-            href="https://github.com" 
+            href="https://github.com/Muliminty/react-idea" 
             target="_blank" 
             rel="noopener noreferrer"
             className="nav-link"
