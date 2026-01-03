@@ -107,7 +107,7 @@ async function main() {
     console.log(`\n📁 创建目录: ${targetDir}`)
 
     // 7. 复制并处理模板文件
-    const files = ['index.jsx', 'Component.jsx', 'Component.css']
+    const files = ['index.jsx', 'Component.jsx', 'Component.css', 'Article.mdx']
     
     for (const file of files) {
       const sourcePath = join(templateDir, file)
@@ -121,7 +121,7 @@ async function main() {
       // 读取模板内容
       let content = readFileSync(sourcePath, 'utf-8')
       
-      // 替换占位符
+      // 替换占位符（Article.mdx 可能不需要替换，但为了统一处理也执行）
       content = replacePlaceholders(content, replacements)
       
       // 写入新文件
@@ -135,7 +135,8 @@ async function main() {
     console.log(`   1. 编辑 src/effects/${componentName}/Component.jsx 实现你的特效`)
     console.log(`   2. 编辑 src/effects/${componentName}/Component.css 添加样式`)
     console.log(`   3. 编辑 src/effects/${componentName}/index.jsx 更新元数据`)
-    console.log(`   4. 刷新页面，组件会自动显示在界面上\n`)
+    console.log(`   4. 编辑 src/effects/${componentName}/Article.mdx 编写实现文章（可选）`)
+    console.log(`   5. 刷新页面，组件会自动显示在界面上\n`)
 
   } catch (error) {
     console.error('❌ 创建组件时出错:', error.message)

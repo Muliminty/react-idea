@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useEffects } from '../hooks/useEffects'
 import Navbar from '../components/Navbar'
 import CodeViewer from '../components/CodeViewer'
+import MDXContent from '../components/MDXContent'
 import './EffectDetail.css'
 
 function EffectDetail() {
@@ -15,7 +16,9 @@ function EffectDetail() {
   // 确定可用的 tabs
   const hasJsx = !!effect?.code
   const hasCss = !!effect?.css
-  const hasMultipleTabs = hasJsx && hasCss
+  const hasArticle = !!effect?.article
+  const tabCount = [hasJsx, hasCss, hasArticle].filter(Boolean).length
+  const hasMultipleTabs = tabCount > 1
 
   // 当 effect 变化时，设置默认的 activeTab
   useEffect(() => {
@@ -24,9 +27,11 @@ function EffectDetail() {
         setActiveTab('jsx')
       } else if (hasCss) {
         setActiveTab('css')
+      } else if (hasArticle) {
+        setActiveTab('article')
       }
     }
-  }, [effect?.meta.id, hasJsx, hasCss])
+  }, [effect?.meta.id, hasJsx, hasCss, hasArticle])
 
   if (!effect) {
     return (
@@ -118,6 +123,14 @@ function EffectDetail() {
                       样式代码
                     </button>
                   )}
+                  {hasArticle && (
+                    <button
+                      className={`code-tab ${activeTab === 'article' ? 'active' : ''}`}
+                      onClick={() => setActiveTab('article')}
+                    >
+                      实现思路
+                    </button>
+                  )}
                 </div>
               )}
               <div className="code-tab-content">
@@ -134,6 +147,9 @@ function EffectDetail() {
                     code={effect.css}
                     language="css"
                   />
+                )}
+                {activeTab === 'article' && hasArticle && (
+                  <MDXContent content={effect.article} />
                 )}
               </div>
             </div>

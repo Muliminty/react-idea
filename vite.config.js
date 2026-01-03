@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import mdx from '@mdx-js/rollup'
 
 // 获取仓库名称（用于 GitHub Pages）
 const getBasePath = () => {
@@ -16,7 +17,12 @@ const base = process.env.NODE_ENV === 'production' ? getBasePath() : '/'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    mdx({
+      jsxImportSource: 'react',
+    }),
+  ],
   base: base,
   build: {
     outDir: 'dist',

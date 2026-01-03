@@ -14,10 +14,10 @@ import componentCss from './Component.css?raw'
 export const meta = {
   id: 'transition-list', // 唯一标识，使用 kebab-case
   title: '过度列表',
-  description: '特效的详细描述，说明它的功能和特点',
+  description: '列表过渡动画效果',
   tags: ['列表', '动画'], // 标签数组，用于筛选
-  category: '分类名称', // 可选：分类名称
-  author: '', // 可选：作者
+  category: '列表', // 可选：分类名称
+  author: 'muliminty', // 可选：作者
   createdAt: new Date().toISOString(), // 创建时间
 }
 

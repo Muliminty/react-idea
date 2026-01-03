@@ -1,0 +1,176 @@
+.mdx-content {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 3px solid var(--accent);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--shadow);
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.mdx-content :global(h1),
+.mdx-content :global(h2),
+.mdx-content :global(h3),
+.mdx-content :global(h4),
+.mdx-content :global(h5),
+.mdx-content :global(h6) {
+  color: var(--accent);
+  font-weight: 900;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mdx-content :global(h1) {
+  font-size: 2rem;
+  text-shadow: 4px 4px 0 var(--shadow);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.5rem;
+}
+
+.mdx-content :global(h2) {
+  font-size: 1.75rem;
+  text-shadow: 3px 3px 0 var(--shadow);
+}
+
+.mdx-content :global(h3) {
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 0 var(--shadow);
+}
+
+.mdx-content :global(p) {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.mdx-content :global(ul),
+.mdx-content :global(ol) {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.mdx-content :global(li) {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.mdx-content :global(ul li) {
+  list-style-type: square;
+}
+
+.mdx-content :global(ol li) {
+  list-style-type: decimal;
+}
+
+.mdx-content :global(strong) {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.mdx-content :global(em) {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.mdx-content :global(code) {
+  background: var(--bg-secondary);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--accent);
+  font-weight: 700;
+}
+
+.mdx-content :global(pre) {
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent);
+  border-radius: 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.mdx-content :global(pre code) {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.mdx-content :global(blockquote) {
+  border-left: 4px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  padding: 1rem 1.5rem;
+  border-radius: 0;
+}
+
+.mdx-content :global(a) {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+  transition: all 0.2s;
+}
+
+.mdx-content :global(a:hover) {
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 0.2rem 0.5rem;
+  margin: 0 -0.5rem;
+}
+
+.mdx-content :global(img) {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--accent);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--shadow);
+  margin: 1.5rem 0;
+}
+
+.mdx-content :global(hr) {
+  border: none;
+  border-top: 3px solid var(--accent);
+  margin: 2rem 0;
+  box-shadow: 0 2px 0 var(--shadow);
+}
+
+.mdx-content :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 2px solid var(--accent);
+}
+
+.mdx-content :global(th),
+.mdx-content :global(td) {
+  border: 1px solid var(--accent);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.mdx-content :global(th) {
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mdx-content :global(tr:nth-child(even)) {
+  background: var(--bg-secondary);
+}
+
