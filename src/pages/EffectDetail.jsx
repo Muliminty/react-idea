@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useEffects } from '../hooks/useEffects'
 import Navbar from '../components/Navbar'
 import CodeViewer from '../components/CodeViewer'
@@ -9,7 +9,24 @@ function EffectDetail() {
   const { id } = useParams()
   const { effects } = useEffects()
   const [showCode, setShowCode] = useState(false)
+  const [activeTab, setActiveTab] = useState('jsx')
   const effect = effects.find((e) => e.meta.id === id)
+  
+  // 确定可用的 tabs
+  const hasJsx = !!effect?.code
+  const hasCss = !!effect?.css
+  const hasMultipleTabs = hasJsx && hasCss
+
+  // 当 effect 变化时，设置默认的 activeTab
+  useEffect(() => {
+    if (effect) {
+      if (hasJsx) {
+        setActiveTab('jsx')
+      } else if (hasCss) {
+        setActiveTab('css')
+      }
+    }
+  }, [effect?.meta.id, hasJsx, hasCss])
 
   if (!effect) {
     return (
@@ -83,18 +100,42 @@ function EffectDetail() {
 
           {showCode && (
             <div className="code-section">
-              <CodeViewer
-                title="组件代码"
-                code={effect.code}
-                language="jsx"
-              />
-              {effect.css && (
-                <CodeViewer
-                  title="样式代码"
-                  code={effect.css}
-                  language="css"
-                />
+              {hasMultipleTabs && (
+                <div className="code-tabs">
+                  {hasJsx && (
+                    <button
+                      className={`code-tab ${activeTab === 'jsx' ? 'active' : ''}`}
+                      onClick={() => setActiveTab('jsx')}
+                    >
+                      组件代码
+                    </button>
+                  )}
+                  {hasCss && (
+                    <button
+                      className={`code-tab ${activeTab === 'css' ? 'active' : ''}`}
+                      onClick={() => setActiveTab('css')}
+                    >
+                      样式代码
+                    </button>
+                  )}
+                </div>
               )}
+              <div className="code-tab-content">
+                {activeTab === 'jsx' && hasJsx && (
+                  <CodeViewer
+                    title="组件代码"
+                    code={effect.code}
+                    language="jsx"
+                  />
+                )}
+                {activeTab === 'css' && hasCss && (
+                  <CodeViewer
+                    title="样式代码"
+                    code={effect.css}
+                    language="css"
+                  />
+                )}
+              </div>
             </div>
           )}
         </div>
