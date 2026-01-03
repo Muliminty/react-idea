@@ -15,9 +15,9 @@ export const meta = {
   id: 'transition-list', // 唯一标识，使用 kebab-case
   title: '过度列表',
   description: '特效的详细描述，说明它的功能和特点',
-  tags: ['标签1', '标签2'], // 标签数组，用于筛选
+  tags: ['列表', '动画'], // 标签数组，用于筛选
   category: '分类名称', // 可选：分类名称
-  author: '你的名字', // 可选：作者
+  author: '', // 可选：作者
   createdAt: new Date().toISOString(), // 创建时间
 }
 

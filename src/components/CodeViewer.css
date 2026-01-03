@@ -67,52 +67,22 @@
   box-shadow: 4px 4px 0 var(--shadow-dark);
 }
 
-.code-block {
-  margin: 0;
-  padding: 1.5rem;
+.code-block-wrapper {
   overflow-x: auto;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
   border: 2px solid var(--border);
+  background: #f6f8fa;
 }
 
-.code-block code {
-  color: inherit;
-  font-family: inherit;
+.code-block-wrapper pre {
+  margin: 0 !important;
+  padding: 1.5rem !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
-/* 代码高亮样式 */
-.language-jsx .keyword {
-  color: #000000;
-  font-weight: 700;
-}
-
-.language-jsx .string {
-  color: #333333;
-}
-
-.language-jsx .function {
-  color: #1a1a1a;
-  font-weight: 600;
-}
-
-.language-jsx .comment {
-  color: #666666;
-}
-
-.language-css .property {
-  color: #1a1a1a;
-  font-weight: 600;
-}
-
-.language-css .value {
-  color: #333333;
-}
-
-.language-css .selector {
-  color: #000000;
-  font-weight: 700;
+.code-block-wrapper code {
+  font-family: 'Fira Code', 'Courier New', monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
 }
