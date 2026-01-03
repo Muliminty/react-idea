@@ -5,7 +5,7 @@
  * 系统会自动扫描这个文件来发现新组件
  */
 
-import Component from './Component'
+import Component from './Component.jsx'
 // 使用 Vite 的 ?raw 导入来读取文件内容
 import componentCode from './Component.jsx?raw'
 import componentCss from './Component.css?raw'

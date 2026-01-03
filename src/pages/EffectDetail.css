@@ -175,7 +175,7 @@
   border: 2px solid var(--accent);
 }
 
-.effect-preview::before {
+/* .effect-preview::before {
   content: '';
   position: absolute;
   top: 0;
@@ -187,7 +187,8 @@
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 30px 30px;
   opacity: 0.3;
-}
+ pointer-events: none;  /* 添加这行 */
+} */
 
 .preview-actions {
   display: flex;
