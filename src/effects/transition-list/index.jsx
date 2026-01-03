@@ -18,7 +18,7 @@ export const meta = {
   tags: ['列表', '动画'], // 标签数组，用于筛选
   category: '列表', // 可选：分类名称
   author: 'muliminty', // 可选：作者
-  createdAt: new Date().toISOString(), // 创建时间
+  createdAt: '2026-01-03', // 创建时间
 }
 
 // 导出组件
