@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useEffects } from '../hooks/useEffects'
+import { useFullscreen } from '../hooks/useFullscreen'
 import Navbar from '../components/Navbar'
 import CodeViewer from '../components/CodeViewer'
 import MDXContent from '../components/MDXContent'
@@ -12,6 +13,10 @@ function EffectDetail() {
   const [showCode, setShowCode] = useState(false)
   const [activeTab, setActiveTab] = useState('jsx')
   const effect = effects.find((e) => e.meta.id === id)
+  
+  // 全屏功能
+  const previewRef = useRef(null)
+  const { isFullscreen, toggleFullscreen, isSupported } = useFullscreen(previewRef)
   
   // 确定可用的 tabs
   const hasJsx = !!effect?.code
@@ -90,8 +95,17 @@ function EffectDetail() {
 
         <div className="effect-detail-content">
           <div className="effect-preview-container">
-            <div className="effect-preview">
+            <div className="effect-preview" ref={previewRef}>
               <effect.component />
+              {isSupported && (
+                <button
+                  onClick={toggleFullscreen}
+                  className={`fullscreen-btn ${isFullscreen ? 'active' : ''}`}
+                  title={isFullscreen ? '退出全屏' : '进入全屏'}
+                >
+                  {isFullscreen ? '⤢ 退出全屏' : '⤢ 全屏'}
+                </button>
+              )}
             </div>
             <div className="preview-actions">
               <button

@@ -175,24 +175,11 @@
   border: 2px solid var(--accent);
 }
 
-/* .effect-preview::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 30px 30px;
-  opacity: 0.3;
- pointer-events: none;  /* 添加这行 */
-} */
 
 .preview-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -242,6 +229,62 @@
   background: var(--accent);
   color: var(--bg-primary);
   box-shadow: 6px 6px 0 var(--shadow-dark);
+}
+
+/* 全屏按钮样式 */
+.fullscreen-btn {
+  background: var(--bg-primary);
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 4px 4px 0 var(--shadow);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.fullscreen-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.fullscreen-btn:hover {
+  color: var(--bg-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.fullscreen-btn:hover::before {
+  left: 0;
+}
+
+.fullscreen-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+  box-shadow: 6px 6px 0 var(--shadow-dark);
+}
+
+.fullscreen-btn.active::before {
+  left: 0;
 }
 
 .code-section {
